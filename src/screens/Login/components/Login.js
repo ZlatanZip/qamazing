@@ -1,5 +1,12 @@
 import React, { Component } from "react";
 
+
+import CustomForm from "../../../shared_components/CustomForm/CustomForm";
+import CustomInput from "../../../shared_components/CustomInput/CustomInput";
+
+import "../styles/style.css";
+
+
 class Login extends Component {
   constructor(props) {
     super(props);
@@ -12,41 +19,46 @@ class Login extends Component {
   }
 
   handleChange = (event) => {
+    console.log(event.target.value);
+
     this.setState({
       [event.target.name]: event.target.value,
     });
   };
 
+
+  handleLogin = async (e) => {
+    e.preventDefault();
+  }
+
   handleSubmit = () => {
+
     const { email, password } = this.state;
   };
 
   render() {
     return (
-      <div>
-        <form onSubmit={this.handleSubmit}>
-          <input
-            type="email"
-            name="email"
-            placeholder="Type in your email"
-            value={this.state.email}
-            onChange={this.handleChange}
-            required
-          />
-
-          <input
-            type="password"
-            name="password"
-            placeholder="Type in your password"
-            value={this.state.password}
-            onChange={this.handleChange}
-            required
-          />
-          <button type="submit">Login</button>
-        </form>
-      </div>
+      
+        <div className="form_center">
+          <CustomForm
+            title="Login"
+            handleSubmit={this.handleSubmit}
+            buttonText="Login"
+          >
+            <CustomInput
+              label="E-mail"
+              placeholder="Enter your email"
+              errorText="Please enter your email"
+            />
+            <CustomInput
+              label="Password"
+              placeholder="Enter your password"
+              errorText="Please enter your password"
+            />
+          </CustomForm>
+        <div>      
     );
   }
-}
+} 
 
 export default Login;

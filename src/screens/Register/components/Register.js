@@ -1,5 +1,11 @@
 import React, { Component } from "react";
 
+
+iport "../styles/style.css";
+import CustomInput from "../../../shared_components/CustomInput/CustomInput";
+import CustomForm from "../../../shared_components/CustomForm/CustomForm";
+
+
 class Register extends Component {
   constructor(props) {
     super(props);
@@ -24,34 +30,39 @@ class Register extends Component {
 
   render() {
     return (
-      <div>
-        <form onSubmit={this.handleSubmit}>
-          <input
-            type="email"
-            name="email"
+
+      <div className="form_center">
+        <CustomForm
+          title="Register"
+          handleSubmit={this.handleSubmit}
+          buttonText="Register"
+          buttonType="submit"
+        >
+          <CustomInput
+            id="name"
+            label="Full Name"
+            placeholder="Enter your full name"
+            errorText="Please enter your full name"
+          />
+          <CustomInput
+            id="email"
+            label="E-mail"
             placeholder="Enter your email"
-            value={this.state.email}
-            onChange={this.handleChange}
-            required
+            errorText="Please enter your email"
           />
-          <input
-            type="password"
-            name="password"
-            placeholder="Enter your password"
-            value={this.state.password}
-            onChange={this.handleChange}
-            required
+          <CustomInput
+            id="password"
+            label="Password"
+            placeholder="Enter your new password"
+            errorText="Please enter your new password"
           />
-          <input
-            type="password"
-            name="password_confirmation"
-            placeholder="Enter your password"
-            value={this.state.password_confirmation}
-            onChange={this.handleChange}
-            required
+          <CustomInput
+            id="cofirmationPassword"
+            label="Confirm Password"
+            placeholder="Repeat your new password"
+            errorText="Please repeat your password "
           />
-          <button type="submit">Register</button>
-        </form>
+        </CustomForm>   
       </div>
     );
   }
