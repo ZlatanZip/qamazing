@@ -1,0 +1,39 @@
+.input_wrapper {
+  padding-bottom: 25px;
+}
+
+.input_field {
+  width: 85%;
+  background-color: transparent;
+  border: none;
+  color: rgba(0, 0, 0, 0.911);
+  outline: none;
+  border-bottom: 1px solid rgb(15, 174, 214);
+  font-size: 1em;
+  font-weight: 300;
+  padding-bottom: 10px;
+  margin-top: 10px;
+}
+
+.input_field:focus {
+  font-weight: 500;
+  color: white;
+}
+
+.input_field_errorText {
+  display: block;
+  color: rgb(251, 97, 76);
+  font-size: smaller;
+}
+
+.input_field_label {
+  display: block;
+  text-transform: uppercase;
+  font-size: 0.9em;
+  font-weight: 500;
+  color: rgb(255, 136, 1);
+}
+
+.input_field::placeholder {
+  color: rgb(255, 255, 255);
+}

@@ -2,6 +2,7 @@ import React from "react";
 
 import "./style.css";
 
+<<<<<<< HEAD
 const INPUT_CHANGE = "INPUT_CHANGE";
 const INPUT_BLUR = "INPUT_BLUR";
 
@@ -29,6 +30,10 @@ const CustomInput = (props) => {
     isValid: false,
     touched: false,
   });
+=======
+const CustomInput = (props) => {
+  const { id, email, errorText, required, min, max } = props;
+>>>>>>> b3066bc07831e93a8456b9568d81012bde596491
 
   const textChangeHandler = (text) => {
     const regex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
