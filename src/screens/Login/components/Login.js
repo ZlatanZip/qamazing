@@ -1,8 +1,7 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
 
-import CustomForm from "../../../shared_components/CustomForm/CustomForm";
-import CustomInput from "../../../shared_components/CustomInput/CustomInput";
-
+import LoginForm from "./LoginForm";
 import "../styles/style.css";
 
 class Login extends Component {
@@ -35,25 +34,16 @@ class Login extends Component {
   render() {
     return (
       <div className="form_center">
-        <CustomForm
-          title="Login"
-          handleSubmit={this.handleSubmit}
-          buttonText="Login"
-        >
-          <CustomInput
-            label="E-mail"
-            placeholder="Enter your email"
-            errorText="Please enter your email"
-          />
-          <CustomInput
-            label="Password"
-            placeholder="Enter your password"
-            errorText="Please enter your password"
-          />
-        </CustomForm>
+        <LoginForm />
       </div>
     );
   }
 }
 
-export default Login;
+const mapStateToProps = (state) => ({});
+
+const mapDispatchToProps = (dispatch) => ({
+  login: () => dispatch(),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Login);
