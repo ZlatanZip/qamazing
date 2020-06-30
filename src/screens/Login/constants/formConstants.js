@@ -17,5 +17,5 @@ export default {
     passwordErrorText: "Password is required",
   },
   buttonText: "Login",
-  anchorText: "Forgot Password",
+  anchorText: "Forgot Password?",
 };

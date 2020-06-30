@@ -1,5 +1,8 @@
 import React from "react";
 import { reduxForm, Field } from "redux-form";
+import GoogleLogin from "react-google-login";
+
+import { useHistory } from "react-router-dom";
 
 import "../styles/style.css";
 
@@ -16,6 +19,18 @@ const required = (v) => {
 
 const LoginForm = (props) => {
   const { handleSubmit, valid } = props;
+  let history = useHistory();
+
+  const googleRespose = (res) => {
+    const googleResponseData = {
+      name: res.profileObj.name,
+      email: res.profileObj.email,
+    };
+    console.log(res);
+    console.log(res.profileObj);
+    history.push("/dashboard");
+  };
+
   return (
     <div className="form_center">
       <form onSubmit={handleSubmit} className="form_fields">
@@ -44,6 +59,16 @@ const LoginForm = (props) => {
         />
 
         <a className="form_anchor">{formConstants.anchorText}</a>
+        <div style={{ borderRadius: "25px", overflow: "hidden" }}>
+          <GoogleLogin
+            style={{ background: "red" }}
+            clientId="184114775759-9ovjrh0n1rcflc8f75q4gv2o0d9a8ms7.apps.googleusercontent.com"
+            buttonText="Login"
+            onSuccess={googleRespose}
+            onFailure={googleRespose}
+            cookiePolicy={"single_host_origin"}
+          />
+        </div>
       </form>
     </div>
   );
