@@ -1,10 +1,11 @@
-import LOGIN_ACTION_TYPE from "../constants/actionTypes";
+import { LOGIN_ACTION_TYPE } from "../constants/actionTypes";
 
 const initialState = {
   loggedIn: false,
 };
 
 const loginReducer = (state = initialState, action) => {
+  console.log(action.data);
   switch (action.type) {
     case LOGIN_ACTION_TYPE:
       return {

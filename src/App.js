@@ -12,9 +12,7 @@ const App = (props) => {
     <Router>
       <Switch>
         <div className="App">
-          <Route path="/" exact component={Landing} />
-          <Route path="/login" component={Login} />
-          <Route path="/register" component={Register} />
+          <Route exact path="/" component={Login} />
           <Route path="/dashboard" component={Dashboard} />
         </div>
       </Switch>

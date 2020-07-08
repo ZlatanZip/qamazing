@@ -1,0 +1,3 @@
+export default {
+  REGISTER_ACTION_TYPE: "REGISTER_ACTION_TYPE",
+};

@@ -1,20 +1,15 @@
+//import { API } from "../../../apiHit/axios";
 import Axios from "axios";
-
-import loginRoute from "../constants/apiRoute";
+import LOGIN_ROUTE from "../constants/apiRoute";
 
 const URL = process.env.REACT_APP_API_URL;
-const PORT = process.env.REACT_APP_API_URL;
+const PORT = process.env.REACT_APP_API_PORT;
 
-const dataFromStorage = localStorage.getItem("userData");
-let userId;
-
-if (dataFromStorage) {
-  const parsedData = JSON.parse(dataFromStorage);
-  userId = parsedData.userId;
-}
-
-export default login = async (email, password) => {
-  const loginUrl = `${URL}${PORT}${loginRoute}`;
-  const loginData = await Axios.post(loginUrl, { login, password });
+const login = async (data) => {
+  console.log(data);
+  const loginUrl = `${URL}${PORT}${LOGIN_ROUTE}`;
+  const loginData = await Axios.get(loginUrl, { data });
   return loginData;
 };
+
+export default login;
