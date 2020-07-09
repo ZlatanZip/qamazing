@@ -1,0 +1,82 @@
+.responsiveTable {
+  width: 100%;
+  font-size: 18px;
+  border: 1px solid gray;
+}
+
+.responsiveTable td .tdBefore {
+  display: none;
+}
+
+.thead {
+  background-color: rgb(31, 30, 30);
+  color: white;
+  border: 1px solid gray;
+}
+
+@media screen and (max-width: 40em) {
+  /*
+      Force table elements to not behave like tables anymore
+      Hide table headers (but not display: none;, for accessibility)
+    */
+
+  .responsiveTable table,
+  .responsiveTable thead,
+  .responsiveTable tbody,
+  .responsiveTable th,
+  .responsiveTable td,
+  .responsiveTable tr {
+    display: block;
+    font-size: 18px;
+    border: 1px solid gray;
+  }
+
+  .responsiveTable thead tr {
+    position: absolute;
+    top: -9999px;
+    left: -9999px;
+    border-bottom: 2px solid #333;
+  }
+
+  .tr {
+    background-color: rgba(255, 99, 71, 0.342);
+    cursor: pointer;
+  }
+  .responsiveTable thead tr:hover {
+    background-color: rgba(255, 99, 71, 0.342);
+    cursor: pointer;
+    position: absolute;
+    top: -9999px;
+    left: -9999px;
+    border-bottom: 2px solid #333;
+  }
+
+  .responsiveTable tbody tr {
+    border: 1px solid #000;
+    padding: 0.25em;
+  }
+
+  .responsiveTable td.pivoted {
+    /* Behave like a "row" */
+    border: none !important;
+    position: relative;
+    padding-left: calc(50% + 10px) !important;
+    text-align: left !important;
+    white-space: pre-wrap;
+    overflow-wrap: break-word;
+  }
+
+  .responsiveTable td .tdBefore {
+    /* Now like a table header */
+    position: absolute;
+    display: block;
+    font-size: 18px;
+    /* Top/left values mimic padding */
+    left: 1rem;
+    width: calc(50% - 20px);
+    white-space: pre-wrap;
+    overflow-wrap: break-word;
+    text-align: left !important;
+    font-weight: 600;
+  }
+}

@@ -1,9 +1,14 @@
 import React from "react";
-import "";
 
 const Logo = () => {
   return (
-    <div>
+    <div
+      style={{
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+      }}
+    >
       <img
         class="logo-badge"
         src="//ministryofprogramming.com/_assets/images/mop-logo-badge-cf9e20233d.svg"

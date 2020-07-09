@@ -4,7 +4,9 @@
   height: 100%;
   justify-content: center;
   align-items: center;
-  background: rgb(32, 32, 32);
+  color: white;
+  background-color: rgb(32, 32, 32);
+  font-size: 35px;
 }
 .item2 {
   grid-area: menu;
@@ -53,7 +55,6 @@
 }
 
 .grid-container > div {
-  background-color: rgba(255, 255, 255, 0.8);
   text-align: center;
   padding: 20px 0;
   font-size: 30px;
