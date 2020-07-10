@@ -27,6 +27,13 @@
   grid-area: footer;
 }
 
+.center {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .grid-container {
   display: grid;
   grid-template-columns: 60px 20% auto;

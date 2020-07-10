@@ -7,7 +7,7 @@ const API_PORT = process.env.REACT_APP_API_PORT;
 
 //import router from "./router/router";
 
-axios.interceptors.request.use(
+/* axios.interceptors.request.use(
   (config) => {
     const token = LocalStorageHelper.getAccessToken();
     if (token) {
@@ -20,7 +20,7 @@ axios.interceptors.request.use(
     Promise.reject(error);
   }
 );
-
+ */
 /* axios.interceptors.response.use(
   (response) => {
     return response;

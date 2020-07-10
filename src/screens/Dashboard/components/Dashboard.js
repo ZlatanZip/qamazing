@@ -9,6 +9,8 @@ import { connect } from "react-redux";
 import { getUsers } from "../../Users/actions/userActions";
 
 import "../styles/style.css";
+
+import Loader from "../../../shared_components/Loader/component/Loader";
 import SideMenu from "../../../shared_components/SideMenu/components/SideMenu";
 import Toolbar from "../../../shared_components/Toolbar/Toolbar";
 
@@ -20,8 +22,8 @@ class Dashboard extends Component {
   }
 
   render() {
-    const { users } = this.props;
-    console.log(users);
+    const { users, loader } = this.props;
+    console.log(loader);
     return (
       <div className="grid-container">
         <Toolbar />
@@ -33,7 +35,13 @@ class Dashboard extends Component {
         </div>
 
         <div className="item4">
-          <Table users={users} />
+          {loader ? (
+            <div className="center">
+              <Loader />
+            </div>
+          ) : (
+            <Table users={users} />
+          )}
         </div>
         <div className="item5">Footer</div>
       </div>
@@ -44,6 +52,7 @@ class Dashboard extends Component {
 const mapStateToProps = function (state) {
   return {
     users: state.users.users,
+    loader: state.loader.loader,
     // userProfile: state.userProfile.userInfo,
   };
 };

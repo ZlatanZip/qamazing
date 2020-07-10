@@ -1,12 +1,12 @@
 import { AUTH_ACTION_TYPE } from "../constants/actionTypes";
 
 const initial_state = {
-  authField: null,
+  accessToken: "my amazing save token",
 };
 
 const applyNewState = (state, action) => ({
   ...state,
-  authField: "maziie",
+  authToken: "",
 });
 
 const authReducer = (state = initial_state, action) => {
