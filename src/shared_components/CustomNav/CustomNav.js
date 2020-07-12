@@ -1,14 +1,16 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 import "./style.css";
-import Logo from "../Logo/components/Logo";
 
-const CustomNav = () => {
+import Logo from "../Logo/components/Logo";
+import HamburgerButton from "../HamburgerButton/HamburgerButton";
+
+const CustomNav = (props) => {
   return (
     <header className="custom_nav">
       <nav className="custom_nav_bar">
         <div>
-          <h4>HamburgerButton</h4>
+          <HamburgerButton click={props.toggleHandler} />
         </div>
         <div className="custom_nav_logo">
           <Logo />

@@ -38,7 +38,7 @@ class Dashboard extends Component {
     console.log(loader);
     return (
       <div>
-        <CustomNav />
+        <CustomNav toggleHandler={this.sideMenuToggleHandler} />
         <SideMenu show={this.state.sideMenuOpen} />
         <div className="grid-container">
           <div className="item1"></div>
