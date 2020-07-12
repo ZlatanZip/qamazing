@@ -6,7 +6,6 @@ import { Provider } from "react-redux";
 import * as serviceWorker from "./serviceWorker";
 import { PersistGate } from "redux-persist/integration/react";
 import { store, persistor } from "./base/store";
-import interceptor from "./apiHit/axiosInterceptor";
 
 ReactDOM.render(
   <Provider store={store}>

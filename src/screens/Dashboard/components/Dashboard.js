@@ -11,39 +11,48 @@ import { getUsers } from "../../Users/actions/userActions";
 import "../styles/style.css";
 
 import Loader from "../../../shared_components/Loader/component/Loader";
-import SideMenu from "../../../shared_components/SideMenu/components/SideMenu";
-import Toolbar from "../../../shared_components/Toolbar/Toolbar";
+import SideMenu from "../../../shared_components/SideMenu/SideMenu";
 
 class Dashboard extends Component {
+  state = {
+    sideMenuOpen: false,
+  };
+
   componentDidMount() {
     const { getUsers } = this.props;
     getUsers("helo");
     console.log("dashboard");
   }
 
+  sideMenuToggleHandler = () => {
+    this.setState((state) => {
+      return {
+        sideMenuOpen: !state.sideMenuOpen,
+      };
+    });
+  };
+
   render() {
     const { users, loader } = this.props;
     console.log(loader);
     return (
-      <div className="grid-container">
-        <Toolbar />
-        <div className="item1">
-          <Logo />
-        </div>
-        <div className="item2">
-          <SideMenu />
-        </div>
+      <div>
+        <SideMenu show={this.state.sideMenuOpen} />
+        <div className="grid-container">
+          <div className="item1"></div>
+          <div className="item2"></div>
 
-        <div className="item4">
-          {loader ? (
-            <div className="center">
-              <Loader />
-            </div>
-          ) : (
-            <Table users={users} />
-          )}
+          <div className="item4">
+            {loader ? (
+              <div className="center">
+                <Loader />
+              </div>
+            ) : (
+              <Table users={users} />
+            )}
+          </div>
+          <div className="item5">Footer</div>
         </div>
-        <div className="item5">Footer</div>
       </div>
     );
   }

@@ -1,7 +1,9 @@
-import { Table, Thead, Tbody, Tr, Th, Td } from "react-super-responsive-table";
-import "./style.css";
-
 import React from "react";
+import { Table, Thead, Tbody, Tr, Th, Td } from "react-super-responsive-table";
+import { Link } from "react-router-dom";
+
+import "./style.css";
+import CustomButton from "../CustomButton/CustomButton";
 
 const CustomTable = (props) => {
   const { users } = props;
@@ -28,6 +30,7 @@ const CustomTable = (props) => {
       <Table className="responsiveTable">
         <Thead className="thead">
           <Tr>
+            <Th>Action</Th>
             <Th>ID</Th>
             <Th>Name</Th>
             <Th>Lastname</Th>
@@ -50,6 +53,11 @@ const CustomTable = (props) => {
           {users &&
             users.map((user) => (
               <Tr className="tr">
+                <Link key={user.userId} to={`/dashboard/users/${user.id}`}>
+                  <Td>
+                    <CustomButton buttonText={`Edit`} />
+                  </Td>
+                </Link>
                 <Td>{user.id}</Td>
                 <Td>{user.name}</Td>
                 <Td>{user.lastName}</Td>

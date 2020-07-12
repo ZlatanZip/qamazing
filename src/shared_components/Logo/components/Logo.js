@@ -4,9 +4,7 @@ const Logo = () => {
   return (
     <div
       style={{
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
+        width: "400px",
       }}
     >
       <img
