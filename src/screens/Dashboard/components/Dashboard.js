@@ -13,6 +13,7 @@ import "../styles/style.css";
 import Loader from "../../../shared_components/Loader/component/Loader";
 import SideMenu from "../../../shared_components/SideMenu/SideMenu";
 import CustomNav from "../../../shared_components/CustomNav/CustomNav";
+import BackgroundOpacity from "../../../shared_components/BackgroundOpacity/BackgroundOpacity";
 
 class Dashboard extends Component {
   state = {
@@ -33,13 +34,23 @@ class Dashboard extends Component {
     });
   };
 
+  backgroundOpacityToggleHandler = () => {
+    this.setState({ sideMenuOpen: false });
+  };
+
   render() {
     const { users, loader } = this.props;
-    console.log(loader);
+    let backgroundOpacity;
+    if (this.state.sideMenuOpen) {
+      backgroundOpacity = (
+        <BackgroundOpacity click={this.backgroundOpacityToggleHandler} />
+      );
+    }
     return (
       <div>
         <CustomNav toggleHandler={this.sideMenuToggleHandler} />
         <SideMenu show={this.state.sideMenuOpen} />
+        {backgroundOpacity}
         <div className="grid-container">
           <div className="item1"></div>
           <div className="item2"></div>
