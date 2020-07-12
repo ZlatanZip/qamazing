@@ -12,6 +12,7 @@ import "../styles/style.css";
 
 import Loader from "../../../shared_components/Loader/component/Loader";
 import SideMenu from "../../../shared_components/SideMenu/SideMenu";
+import CustomNav from "../../../shared_components/CustomNav/CustomNav";
 
 class Dashboard extends Component {
   state = {
@@ -37,6 +38,7 @@ class Dashboard extends Component {
     console.log(loader);
     return (
       <div>
+        <CustomNav />
         <SideMenu show={this.state.sideMenuOpen} />
         <div className="grid-container">
           <div className="item1"></div>
