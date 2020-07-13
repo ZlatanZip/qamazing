@@ -3,9 +3,14 @@ import React from "react";
 import "./style.css";
 
 const CustomButton = (props) => {
-  const { buttonText, buttonType, disabled } = props;
+  const { buttonText, buttonType, disabled, click } = props;
   return (
-    <button className="custom_button" type={buttonType} disabled={disabled}>
+    <button
+      onClick={click}
+      className="custom_button"
+      type={buttonType}
+      disabled={disabled}
+    >
       {buttonText}
     </button>
   );

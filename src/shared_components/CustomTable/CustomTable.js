@@ -45,7 +45,7 @@ const CustomTable = (props) => {
             <Th>Active</Th>
             <Th>Deleted</Th>
             <Th>Date Created</Th>
-            <Th>Contrac Start</Th>
+            <Th>Contract Start</Th>
             <Th>Contract End</Th>
           </Tr>
         </Thead>

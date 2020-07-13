@@ -42,6 +42,8 @@
   background-color: rgba(0, 0, 0, 0.2);
   cursor: pointer;
 }
-.side_Menu a {
+.link {
   font-weight: 600;
+  text-decoration: none;
+  color: black;
 }

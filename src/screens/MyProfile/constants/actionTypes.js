@@ -1,0 +1,2 @@
+export const LOGIN_ACTION_TYPE = "LOGIN_ACTION_TYPE";
+export const AUTH_ACTION_TYPE = "AUTH_ACTION_TYPE";

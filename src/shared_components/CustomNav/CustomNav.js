@@ -1,5 +1,6 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
+import { FaRegUserCircle } from "react-icons/fa";
 import "./style.css";
 
 import Logo from "../Logo/components/Logo";
@@ -18,7 +19,7 @@ const CustomNav = (props) => {
         <div className="spacer" />
         <div className="custom_nav_bar_items">
           <NavLink className="custom_nav_bar_item" to="/my_profile">
-            Profile
+            <FaRegUserCircle size={36} />
           </NavLink>
         </div>
       </nav>

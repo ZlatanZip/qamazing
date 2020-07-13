@@ -80,7 +80,6 @@ const LoginForm = (props) => {
         <CustomButton
           buttonText={formConstants.buttonText}
           buttonType="submit"
-          disabled={!valid}
         />
         <a className="form_anchor">{formConstants.anchorText}</a>
         {user && <h1 className="form_title">{user}</h1>}

@@ -5,12 +5,12 @@
   justify-content: center;
   align-items: center;
   color: white;
-  background-color: rgb(32, 32, 32);
+  background-color: rgb(2, 2, 2);
   font-size: 35px;
 }
 .item2 {
   grid-area: menu;
-  background-color: rgb(32, 32, 32);
+  background-color: rgb(2, 2, 2);
 }
 .item3 {
   grid-area: main;
@@ -28,10 +28,9 @@
 }
 
 .center {
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  height: 80vh;
+  padding: 5vh;
+  background: black;
 }
 
 .grid-container {
@@ -43,7 +42,7 @@
     "menu right right right right right"
     "menu footer footer footer footer footer";
   grid-gap: 2px;
-  background: rgb(32, 32, 32);
+  background: rgb(8, 8, 8);
   /* 
   wrapper > div:nth-child(odd){
   background:'coral'
@@ -65,4 +64,20 @@
   text-align: center;
   padding: 20px 0;
   font-size: 30px;
+}
+/*------------------------------------------------------------------------------*/
+.dash_container {
+}
+.dash_header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: black;
+  margin-top: 56px;
+  font-size: 25px;
+}
+
+.dash_content {
+  width: 85%;
 }

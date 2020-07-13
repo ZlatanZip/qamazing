@@ -4,11 +4,13 @@
 
 .input_field {
   width: 85%;
-  background-color: transparent;
+  background-color: white;
+  height: 32px;
   border: none;
+  border-radius: 5px;
   color: rgba(0, 0, 0, 0.911);
   outline: none;
-  border-bottom: 1px solid rgb(15, 174, 214);
+  border-bottom: 1px solid rgb(253, 253, 253);
   font-size: 1em;
   font-weight: 300;
   padding-bottom: 10px;
@@ -31,9 +33,9 @@
   text-transform: uppercase;
   font-size: 0.9em;
   font-weight: 500;
-  color: rgb(255, 136, 1);
+  color: rgb(255, 1, 1);
 }
 
 .input_field::placeholder {
-  color: rgb(255, 255, 255);
+  color: rgb(88, 72, 72);
 }

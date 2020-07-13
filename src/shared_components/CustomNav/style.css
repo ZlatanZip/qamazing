@@ -6,6 +6,8 @@
   left: 0;
   color: white;
   background-color: rgb(0, 0, 0);
+  border-bottom: 1px solid rgba(128, 128, 128, 0.39);
+  z-index: 300;
 }
 
 .custom_nav_logo {

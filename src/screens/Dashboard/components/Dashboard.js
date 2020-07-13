@@ -3,7 +3,6 @@ import React, { Component } from "react";
 import Table from "../../../shared_components/CustomTable/CustomTable";
 import Logo from "../../../shared_components/Logo/components/Logo";
 
-import { useDispatch } from "react-redux";
 import { connect } from "react-redux";
 
 import { getUsers } from "../../Users/actions/userActions";
@@ -14,10 +13,18 @@ import Loader from "../../../shared_components/Loader/component/Loader";
 import SideMenu from "../../../shared_components/SideMenu/SideMenu";
 import CustomNav from "../../../shared_components/CustomNav/CustomNav";
 import BackgroundOpacity from "../../../shared_components/BackgroundOpacity/BackgroundOpacity";
+import CustomSearch from "../../../shared_components/customSearch/CustomSearch";
 
 class Dashboard extends Component {
   state = {
     sideMenuOpen: false,
+    userSortData: {
+      sortByColoumn: "",
+      sortDirection: "asc",
+      lastSeen: Number,
+      searchText: "",
+    },
+    componentToRender: <Table />,
   };
 
   componentDidMount() {
@@ -38,6 +45,23 @@ class Dashboard extends Component {
     this.setState({ sideMenuOpen: false });
   };
 
+  onChange = (e) => {
+    const name = e.target.name;
+    const value = e.target.value;
+
+    this.setState((state) => ({
+      ...state,
+      userSortData: {
+        ...state.userSortData,
+        [name]: value,
+      },
+    }));
+  };
+
+  searchAndSortUserHandler = () => {
+    console.log(this.state.userSortData.searchText);
+  };
+
   render() {
     const { users, loader } = this.props;
     let backgroundOpacity;
@@ -47,24 +71,21 @@ class Dashboard extends Component {
       );
     }
     return (
-      <div>
+      <div className="dash_container">
         <CustomNav toggleHandler={this.sideMenuToggleHandler} />
         <SideMenu show={this.state.sideMenuOpen} />
         {backgroundOpacity}
-        <div className="grid-container">
-          <div className="item1"></div>
-          <div className="item2"></div>
 
-          <div className="item4">
-            {loader ? (
-              <div className="center">
-                <Loader />
-              </div>
-            ) : (
-              <Table users={users} />
-            )}
-          </div>
-          <div className="item5">Footer</div>
+        <div className="dash_header">
+          <h1 style={{ color: "white" }}>Users Screen</h1>{" "}
+          <CustomSearch
+            click={this.searchAndSortUserHandler}
+            onChange={this.onChange}
+          />
+        </div>
+
+        <div className="center">
+          <div>{loader ? <Loader /> : <Table users={users} />}</div>
         </div>
       </div>
     );

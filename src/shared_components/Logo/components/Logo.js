@@ -1,4 +1,5 @@
 import React from "react";
+import "../style.css";
 
 const Logo = () => {
   return (
@@ -8,12 +9,12 @@ const Logo = () => {
       }}
     >
       <img
-        class="logo-badge"
+        class="logo-badge logo"
         src="//ministryofprogramming.com/_assets/images/mop-logo-badge-cf9e20233d.svg"
         alt="Ministry of Programming"
       />
       <img
-        id="logo-white"
+        id="logo-white logo"
         class="logo-text-white"
         src="//ministryofprogramming.com/_assets/images/mop-logo-text-white-b7f18a19d9.svg"
         alt="Ministry of Programming"
