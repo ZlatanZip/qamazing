@@ -2,10 +2,10 @@ import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 //import "./App.scss";
-import Register from "./screens/Register/components/Register";
-import Login from "./screens/Login/components/Login";
-import Dashboard from "./screens/Dashboard/components/Dashboard";
-import UserDetails from "./screens/UserDetails/components/UserDetails";
+import Register from "./app/register/components/register";
+import Login from "./app/login/components/login";
+import Dashboard from "./app/dashboard/components/dashboard";
+import UserDetails from "./app/user-details/components/user-details";
 
 const App = (props) => {
   return (
