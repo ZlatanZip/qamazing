@@ -1,5 +1,5 @@
 import APIHitConfig from "../../../apiHit/APIHitConfig";
-import routes from "../constants/api-routes";
+import routes from "../../../app/user-details/constants/api-routes";
 
 const URL = process.env.REACT_APP_API_URL;
 const PORT = process.env.REACT_APP_API_PORT;

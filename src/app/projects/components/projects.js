@@ -1,8 +1,8 @@
 import React from "react";
 
-import SideMenu from "../../../shared_components/SideMenu/components/SideMenu";
+import SideMenu from "../../../shared_components/side-menu/side-menu";
 
-import "../style/style.css";
+import "../styles/style.css";
 
 const Project = () => {
   return (

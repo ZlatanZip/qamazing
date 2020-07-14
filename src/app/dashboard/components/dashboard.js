@@ -15,6 +15,10 @@ import CustomNav from "../../../shared_components/custom-nav/custom-nav";
 import BackgroundOpacity from "../../../shared_components/background-opacity/background-opacity";
 import CustomSearch from "../../../shared_components/custom-search/custom-search";
 
+import Users from "../../users/components/users";
+import Projects from "../../projects/components/projects";
+import Resources from "../../resources/components/resources";
+
 class Dashboard extends Component {
   state = {
     sideMenuOpen: false,
@@ -24,13 +28,36 @@ class Dashboard extends Component {
       lastSeen: Number,
       searchText: "",
     },
-    componentToRender: <Table />,
+    componentToRender: null,
+  };
+
+  componentToRenderHandler = () => {
+    const path = this.props.location.pathname;
+    switch (path) {
+      case "/app/users":
+        return <Users />;
+      case "/app/projects":
+        return <Projects />;
+      case "/app/resources":
+        return <Resources />;
+
+      default:
+        return <Users />;
+    }
   };
 
   componentDidMount() {
     const { getUsers } = this.props;
+
+    const component = this.componentToRenderHandler();
+    this.setState((state) => {
+      return {
+        ...state,
+        componentToRender: component,
+      };
+    });
+
     getUsers("helo");
-    console.log("dashboard");
   }
 
   sideMenuToggleHandler = () => {
@@ -67,6 +94,7 @@ class Dashboard extends Component {
 
   render() {
     const { users, loader } = this.props;
+    const { componentToRender } = this.state;
     let backgroundOpacity;
     if (this.state.sideMenuOpen) {
       backgroundOpacity = (
@@ -88,7 +116,7 @@ class Dashboard extends Component {
         </div>
 
         <div className="center">
-          <div>{loader ? <Loader /> : <Table users={users} />}</div>
+          <div>{loader ? <Loader /> : componentToRender}</div>
         </div>
       </div>
     );
@@ -99,7 +127,6 @@ const mapStateToProps = function (state) {
   return {
     users: state.users.users,
     loader: state.loader.loader,
-    // userProfile: state.userProfile.userInfo,
   };
 };
 
