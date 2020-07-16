@@ -27,8 +27,14 @@
   }
 }
 
+.loader_title {
+  text-align: center;
+  color: white;
+  margin: 20px 0 0 0;
+}
+
 .loader_text {
   text-align: center;
   color: white;
-  padding-top: 1rem;
+  margin: 0 0 20px 0;
 }

@@ -2,9 +2,11 @@ import React from "react";
 import "../style/style.css";
 
 const Loader = (props) => {
+  const { text } = props;
   return (
     <div className="loader">
-      <h4 className="loader_text">MOP</h4>
+      <h1 className="loader_title">MOP</h1>
+      <h2 className="loader_text">{text}</h2>
     </div>
   );
 };
