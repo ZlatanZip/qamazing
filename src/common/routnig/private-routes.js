@@ -8,7 +8,7 @@ const PrivateRoutes = (props) => {
   return (
     <Route
       render={() => {
-        if (!token) {
+        if (token) {
           return children;
         } else {
           return <Redirect to={{ pathname: "/" }} />;

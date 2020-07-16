@@ -6,12 +6,7 @@ import CustomButton from "../custom-button/custom-button";
 const CustomSearch = (props) => {
   return (
     <div>
-      <input
-        name="searchText"
-        className="search"
-        placeholder="  Search a MoP member"
-        onChange={props.onChange}
-      />
+      <input {...props} className="search" />
       {/*    <GoSearch size={32} color="white" /> */}
       <CustomButton buttonText="Find" click={props.click} />
     </div>

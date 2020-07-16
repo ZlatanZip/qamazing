@@ -12,9 +12,10 @@ import Loader from "../../../shared_components/loader/component/loader";
 import SideMenu from "../../../shared_components/side-menu/side-menu";
 import CustomNav from "../../../shared_components/custom-nav/custom-nav";
 import BackgroundOpacity from "../../../shared_components/background-opacity/background-opacity";
+
 import Dashboard from "../../dashboard/components/dashboard";
 import Users from "../../users/components/users";
-import AddUser from "../../add-user/components/add-user";
+//import AddUser from "../../add-user/components/add-user";
 import UserDetails from "../../user-details/components/user-details";
 import MyProfile from "../../my-profile/components/my-profile";
 import Projects from "../../projects/components/projects";
@@ -64,22 +65,17 @@ class Main extends Component {
     console.log(this.state.userSortData);
   };
 
-  renderPrivateRoutes = (url) => {
-    return privateRouteConstants.map(({ path, component }) => {
-      return <Route exact path={`${url}${path}`} component={component} />;
+  renderRoutes = () => {
+    privateRouteConstants.map((route) => {
+      return <Route path={route.path} component={route.component} />;
     });
-  };
-
-  routes = () => {
-    return <Route exact path="app/users" component={Users} />;
   };
 
   render() {
     const { loader } = this.props;
-    const { url } = this.props.match;
+    const { url, path } = this.props.match;
     const { componentToRender } = this.state;
-    const privateRoutes = this.renderPrivateRoutes(url);
-    console.log(url);
+
     let backgroundOpacity;
     if (this.state.sideMenuOpen) {
       backgroundOpacity = (
@@ -92,7 +88,15 @@ class Main extends Component {
         <SideMenu show={this.state.sideMenuOpen} url={url} />
         {backgroundOpacity}
         <div className="center">
-          <Switch>{privateRoutes}</Switch>
+          <Switch>
+            <Route exact path={path} component={Dashboard} />
+            <Route exact path={`${url}/users`} component={Users} />
+            {/* <Route path={`${url}/add_user`} component={AddUser} /> */}
+            <Route path={`${url}/users/:id`} component={UserDetails} />
+            <Route path={`${url}/my_profile`} component={MyProfile} />
+            <Route path={`${url}/projects`} component={Projects} />
+            <Route path={`${url}/resources`} component={Resources} />
+          </Switch>
 
           {loader ? <Loader text="users" /> : componentToRender}
         </div>

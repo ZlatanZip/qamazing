@@ -53,7 +53,7 @@ const CustomTable = (props) => {
           {users &&
             users.map((user) => (
               <Tr className="tr">
-                <Link key={user.userId} to={`/dashboard/users/${user.id}`}>
+                <Link key={user.userId} to={`/app/users/${user.id}`}>
                   <Td>
                     <CustomButton buttonText={`Edit`} />
                   </Td>

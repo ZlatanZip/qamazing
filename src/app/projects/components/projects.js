@@ -1,21 +1,53 @@
-import React from "react";
+import React, { Component } from "react";
+import { connect } from "react-redux";
 
-import SideMenu from "../../../shared_components/side-menu/side-menu";
+import CustomSearch from "../../../shared_components/custom-search/custom-search";
+import Table from "../../../shared_components/custom-table/custom-table";
 
-import "../styles/style.css";
+import { getUsers, searchAndSortUsers } from "../../users/actions/user-actions";
 
-const Project = () => {
-  return (
-    <div class="project-container">
-      <div class="project_header">Company Name</div>
-      <div class="project_menu_left">
-        <SideMenu />
+class Projects extends Component {
+  componentDidMount() {
+    const { getUsers } = this.props;
+
+    /*     const component = this.componentToRenderHandler();
+    this.setState((state) => {
+      return {
+        ...state,
+        componentToRender: component,
+      };
+    }); */
+
+    getUsers("helo");
+  }
+  render() {
+    const { users, loader } = this.props;
+    return (
+      <div>
+        <div className="dash_header">
+          <h1 style={{ color: "white" }}>Projects</h1>{" "}
+          <CustomSearch
+            placeholder=" Search a project"
+            click={this.searchAndSortUserHandler}
+            onChange={this.onChange}
+          />
+        </div>
+        <Table users={users} />
       </div>
-      <div class="project_sideBar_left">Main</div>
-      <div class="project_main">Rght</div>
-      <div class="project_footer">Footer</div>
-    </div>
-  );
+    );
+  }
+}
+
+const mapStateToProps = function (state) {
+  return {
+    users: state.users.users,
+    loader: state.loader.loader,
+  };
 };
 
-export default Project;
+const mapDispatchToProps = {
+  getUsers,
+  searchAndSortUsers,
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Projects);

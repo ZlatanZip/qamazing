@@ -53,7 +53,7 @@ class Login extends Component {
     console.log(data);
     return (
       <div className="form_center">
-        {data}
+        {/*  {data} */}
         <LoginForm>
           <GoogleLogin googleRespose={this.googleResponse} />
         </LoginForm>

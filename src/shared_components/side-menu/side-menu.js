@@ -1,26 +1,27 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import "./style.css";
 
 const SideMenu = (props) => {
-  const sideMenuClasses = props.show ? "side_menu open" : "side_menu";
+  const { show, url } = props;
+  const sideMenuClasses = show ? "side_menu open" : "side_menu";
   return (
     <nav className={sideMenuClasses}>
       <ul>
         <li>
-          <Link to="/dashboard/users" className="link">
+          <NavLink to={`${url}/users`} className="link">
             Users
-          </Link>
+          </NavLink>
         </li>
         <li>
-          <Link to="/dashboard/projects" className="link">
+          <NavLink to={`${url}/projects`} className="link">
             Projects
-          </Link>
+          </NavLink>
         </li>
         <li>
-          <Link to="/dashboard/resources" className="link">
+          <NavLink to={`${url}/resources`} className="link">
             Resources
-          </Link>
+          </NavLink>
         </li>
       </ul>
     </nav>
