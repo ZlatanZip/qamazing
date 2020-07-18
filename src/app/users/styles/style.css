@@ -1,67 +1,12 @@
-.form_center {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  background-color: rgb(219, 208, 208);
-}
-
-.form_title {
-  color: white;
-  padding: 2vh;
-}
-
-.form_fields {
+.users_screen {
   text-align: center;
-  min-width: 400px;
-  background-color: #225e62;
-  padding: 3vh;
-  border-radius: 10px;
+  height: 100vh;
 }
 
-.form_field_label {
-  display: block;
-  text-transform: uppercase;
-  font-size: 0.9em;
-  font-weight: 500;
-  color: rgb(255, 136, 1);
+.user_screen_header {
 }
 
-.form_field_input::placeholder {
-  color: rgb(255, 255, 255);
-}
-
-.form_field_link {
-  color: #66707d;
-  text-decoration: none;
-  display: inline-block;
-  border-bottom: 1.5px solid #225e62;
-  padding-bottom: 5px;
-}
-
-.form_field_checkbox_label {
-  color: #646f7d;
-  font-size: 0.9em;
-}
-
-.formfield_checkbox {
-  position: relative;
-  top: 1.5px;
-}
-
-.form_field_terms_link {
+.user_screen_title {
+  font-size: 45px;
   color: white;
-  border-bottom: 1px solid #199087;
-  text-decoration: none;
-  display: inline-block;
-  padding-bottom: 2px;
-  margin-left: 5px;
-}
-
-.form_anchor {
-  display: block;
-  font-weight: 100;
-  color: white;
-  margin: 20px;
-  cursor: pointer;
 }

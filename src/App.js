@@ -1,22 +1,25 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import routes from "./common/routes/routes";
 
 //import "./App.scss";
-import Register from "./app/register/components/register";
-import Login from "./app/login/components/login";
-import Main from "./app/dashboard/components/dashboard";
-import UserDetails from "./app/user-details/components/user-details";
-import Wrapper from "./app/Wrapper/wrapper";
+
+import GlobalWrapper from "./app/global-wrapper/components/global-wrapper";
 
 const App = (props) => {
+  const routeComponents = routes.publicRoutes.map(
+    ({ path, component }, key) => {
+      return <Route exact path={path} component={component} key={key} />;
+    }
+  );
+
   return (
     <Router>
-      <Switch>
-        <div className="App">
-          <Route exact path="/" component={Login} />
-          <Route path="/app" component={Main} />
-        </div>
-      </Switch>
+      <div className="App">
+        <Route path="/" component={GlobalWrapper}>
+          {routeComponents}
+        </Route>
+      </div>
     </Router>
   );
 };
