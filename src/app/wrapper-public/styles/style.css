@@ -1,0 +1,35 @@
+.wrapper_public {
+  display: flex;
+  flex-direction: row;
+  background-color: black;
+}
+
+.img_wrapper {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.img {
+  max-width: 80%;
+  border: 1vh solid white;
+}
+
+.form_wrapper {
+  background: white;
+  width: 100%;
+}
+.dash_header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: black;
+  margin-top: 56px;
+  font-size: 25px;
+}
+
+.dash_content {
+  width: 85%;
+}

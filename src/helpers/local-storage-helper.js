@@ -1,4 +1,4 @@
-import { store } from "../base/store";
+import {store} from "../base/store";
 import loading from "../shared_components/loader/actions/loader-actions";
 
 class LocalStorageHelper {

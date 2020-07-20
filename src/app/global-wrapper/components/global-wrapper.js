@@ -1,10 +1,13 @@
-import React, { Component } from "react";
-import { connect } from "react-redux";
-import { Switch, Route } from "react-router-dom";
-import PrivateRoutes from "../../../common/routes/private-routes";
+import React, {Component} from "react";
+import {connect} from "react-redux";
+import {BrowserRouter as Router, Route, Switch} from "react-router-dom";
+
+import App from "../../../App";
+import PrivateWrapper from "../../wrapper-private/components/wrapper-private";
+import PublicWrapper from "../../wrapper-public/components/wrapper-public";
 import routeConstants from "../../../common/routes/routes";
 
-import { getUsers, searchAndSortUsers } from "../../users/actions/user-actions";
+import {getUsers, searchAndSortUsers} from "../../users/actions/user-actions";
 
 import "../styles/style.css";
 
@@ -33,7 +36,7 @@ class GlobalWrapper extends Component {
   };
 
   backgroundOpacityToggleHandler = () => {
-    this.setState({ sideMenuOpen: false });
+    this.setState({sideMenuOpen: false});
   };
 
   onChange = (e) => {
@@ -51,35 +54,53 @@ class GlobalWrapper extends Component {
 
   searchAndSortUserHandler = (e) => {
     e.preventDefault();
-    const { searchAndSortUsers } = this.props;
+    const {searchAndSortUsers} = this.props;
     searchAndSortUsers(this.state.userSortData);
     console.log(this.state.userSortData);
   };
 
-  static routeRednerer = (url) => {
-    return routeConstants.privateRoutes.map(({ path, component }) => {
-      return <Route exact path={`${url}${path}`} component={component} />;
-    });
-  };
-
   render() {
-    const { loader } = this.props;
+    const {loader} = this.props;
     // const { url } = this.props.match;
     console.log(this.props);
-    let backgroundOpacity;
-    if (this.state.sideMenuOpen) {
-      backgroundOpacity = (
-        <BackgroundOpacity click={this.backgroundOpacityToggleHandler} />
-      );
-    }
-    return (
-      <div className="dash_container">
-        <CustomNav toggleHandler={this.sideMenuToggleHandler} />
-        <SideMenu show={this.state.sideMenuOpen} />
-        {backgroundOpacity}
 
-        <div className="center">{loader && <Loader text="users" />}</div>
-      </div>
+    const privateComponents = routeConstants.privateRoutes.map((route, key) => {
+      return (
+        <Route
+          exact
+          {...route}
+          path={route.path}
+          component={route.component}
+          key={key}
+        />
+      );
+    });
+
+    const publicComponents = routeConstants.publicRoutes.map((route, key) => {
+      return (
+        <Route
+          exact
+          {...route}
+          path={route.path}
+          component={route.component}
+          key={key}
+        />
+      );
+    });
+
+    return (
+      <Router>
+        <Route exact path='/'>
+          <PublicWrapper>
+            <Switch>{publicComponents}</Switch>
+          </PublicWrapper>
+        </Route>
+        <Route path='/app'>
+          <PrivateWrapper>
+            <Switch>{privateComponents}</Switch>{" "}
+          </PrivateWrapper>
+        </Route>
+      </Router>
     );
   }
 }

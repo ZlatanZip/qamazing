@@ -1,5 +1,5 @@
-import React, { Component } from "react";
-import { connect } from "react-redux";
+import React, {Component} from "react";
+import {connect} from "react-redux";
 
 import LoginForm from "./login-form";
 import "../styles/style.css";
@@ -45,14 +45,14 @@ class Login extends Component {
   };
 
   handleSubmit = () => {
-    const { email, password } = this.state;
+    const {email, password} = this.state;
   };
 
   render() {
-    const { data, logins } = this.props;
+    const {data, logins} = this.props;
     console.log(data);
     return (
-      <div className="form_center">
+      <div className='form_center'>
         {/*  {data} */}
         <LoginForm>
           <GoogleLogin googleRespose={this.googleResponse} />
