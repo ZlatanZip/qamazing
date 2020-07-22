@@ -1,3 +1,15 @@
+<<<<<<< HEAD
+<<<<<<< HEAD
+import React from "react";
+
+const Dashboard = () => {
+  return (
+    <div>
+      <h1 style={{height: "200px", color: "white"}}>Dashboard</h1>
+    </div>
+  );
+};
+=======
 import React, {Component} from "react";
 
 class componentName extends Component {
@@ -9,5 +21,17 @@ class componentName extends Component {
     );
   }
 }
+>>>>>>> Implemented the logic of global, public and private wrapper
+=======
+import React from "react";
 
-export default componentName;
+const Dashboard = () => {
+  return (
+    <div>
+      <h1 style={{height: "200px", color: "white"}}>Dashboard</h1>
+    </div>
+  );
+};
+>>>>>>> Improved global route wrapper
+
+export default Dashboard;
