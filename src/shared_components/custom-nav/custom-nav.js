@@ -1,6 +1,8 @@
 import React from "react";
+
 import {NavLink} from "react-router-dom";
 import {FaRegUserCircle} from "react-icons/fa";
+
 import "./style.css";
 
 import Logo from "../logo/components/logo";
