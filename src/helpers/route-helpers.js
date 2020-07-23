@@ -25,11 +25,9 @@ class RouteHelpers {
     />
   );
 
-  //this my test
-
   static routeRenderer = (routes, url) => {
     return routes.map((route, key) => {
-      return this.authorizedRoutesRenderer(
+      return (
         <Route
           key={key}
           path={`${url}${route.path}`}

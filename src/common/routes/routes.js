@@ -37,13 +37,17 @@ export default {
     },
   ],
   privateRoutes: [
-    {name: "users", path: "/users", component: Users},
+    {
+      name: "users",
+      path: "/users",
+      roles: ["admin", "pr", "dado"],
+      component: Users,
+    },
     {name: "add-user", path: "/add_user", component: AddUser},
     {name: "user-details", path: "/users/:id", component: UserDetails},
     {name: "my-profile", path: "/my_profile", component: MyProfile},
     {name: "projects", path: "/projects", component: Projects},
     {name: "resources", path: "/resources", component: Resources},
     {name: "dashboard", path: "/dashboard", component: Dashboard},
-
   ],
 };

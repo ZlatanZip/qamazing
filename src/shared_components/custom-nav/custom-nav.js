@@ -20,7 +20,7 @@ const CustomNav = (props) => {
         </div>
         <div className='spacer' />
         <div className='custom_nav_bar_items'>
-          <NavLink className='custom_nav_bar_item' to='/my_profile'>
+          <NavLink className='custom_nav_bar_item' to='/app/my_profile'>
             <FaRegUserCircle size={36} />
           </NavLink>
         </div>
