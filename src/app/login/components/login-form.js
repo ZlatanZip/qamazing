@@ -36,7 +36,7 @@ const LoginForm = (props) => {
     loginHandler(user);
     // console.log(res);
     console.log(res.tokenObj.access_token);
-    history.push("/app/users");
+    history.push("/app/dashboard");
   };
 
   const loginHandler = async (data) => {

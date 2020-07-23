@@ -6,10 +6,12 @@ import Loader from "../../../shared_components/loader/component/loader";
 import SideMenu from "../../../shared_components/side-menu/side-menu";
 import CustomNav from "../../../shared_components/custom-nav/custom-nav";
 import BackgroundOpacity from "../../../shared_components/background-opacity/background-opacity";
+import CustomDropDown from "../../../shared_components/custom-dropdown/components/custom-dropdown";
 
 class WrapperPrivate extends Component {
   state = {
     sideMenuOpen: false,
+    dropDownOpen: false,
   };
 
   sideMenuToggleHandler = () => {
@@ -20,15 +22,24 @@ class WrapperPrivate extends Component {
     });
   };
 
+  dropDownToggleHandler = () => {
+    this.setState((state) => {
+      return {
+        dropDownOpen: !state.dropDownOpen,
+      };
+    });
+  };
+
   backgroundOpacityToggleHandler = () => {
     this.setState({sideMenuOpen: false});
   };
 
   render() {
     const {children, loader, url} = this.props;
+    const {sideMenuOpen, dropDownOpen} = this.state;
 
     let backgroundOpacity;
-    if (this.state.sideMenuOpen) {
+    if (sideMenuOpen) {
       backgroundOpacity = (
         <BackgroundOpacity click={this.backgroundOpacityToggleHandler} />
       );
@@ -36,16 +47,23 @@ class WrapperPrivate extends Component {
 
     return (
       <div className='wrapper_private'>
-
-        <CustomNav toggleHandler={this.sideMenuToggleHandler} url={url} />
-        <SideMenu show={this.state.sideMenuOpen} url={url} />
+        <CustomNav
+          sideMenuToggle={this.sideMenuToggleHandler}
+          dropDownToggle={this.dropDownToggleHandler}
+          url={url}
+        />
+        <SideMenu show={sideMenuOpen} url={url} />
         {backgroundOpacity}
-
+        <CustomDropDown
+          show={dropDownOpen}
+          name='Zlatan Salihagic'
+          email='zlatan.salihagic@mop.ba'
+          dropDownToggle={this.dropDownToggleHandler}
+        />
         <div className='center'>
           {children}
           {loader && <Loader text='users' />}
         </div>
-
       </div>
     );
   }

@@ -12,6 +12,10 @@ class LocalStorageHelper {
     return refreshToken;
   };
 
+  static clearUserData = () => {
+    // store.dispatch(setUserInfo({}))
+  };
+
   static showLoader = () => {
     store.dispatch(loading(true));
   };

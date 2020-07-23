@@ -35,9 +35,10 @@
   font-weight: 600;
 }
 
-.custom_nav_bar_item:hover,
-.custom_nav_bar_item:active {
+.custom_nav_bar_user_logo:hover,
+.custom_nav_bar_user_logo:active {
   color: rgba(255, 0, 0, 0.863);
+  cursor: pointer;
 }
 
 @media (max-width: 768px) {

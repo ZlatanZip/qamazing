@@ -15,51 +15,7 @@ import "../styles/style.css";
 
 import Loader from "../../../shared_components/loader/component/loader";
 
-class GlobalWrapper extends Component {
-  state = {
-    sideMenuOpen: false,
-    userSortData: {
-      sortByColoumn: "",
-      sortDirection: "asc",
-      lastSeen: Number,
-      searchText: "",
-    },
-  };
-
-  sideMenuToggleHandler = () => {
-    this.setState( ( state ) => {
-      return {
-        sideMenuOpen: !state.sideMenuOpen,
-      };
-    } );
-  };
-
-  backgroundOpacityToggleHandler = () => {
-    this.setState( { sideMenuOpen: false } );
-  };
-
-  /*   onChange = (e) => {
-    const name = e.target.name;
-    const value = e.target.value;
-
-    this.setState((state) => ({
-      ...state,
-      userSortData: {
-        ...state.userSortData,
-        [name]: value,
-      },
-    }));
-  };
-
-  searchAndSortUserHandler = (e) => {
-    e.preventDefault();
-    const {searchAndSortUsers} = this.props;
-    searchAndSortUsers(this.state.userSortData);
-    console.log(this.state.userSortData);
-  };
- */
-
-
+class Router extends Component {
   render() {
     const {loader} = this.props;
 
@@ -90,11 +46,8 @@ class GlobalWrapper extends Component {
         />
       </BrowserRouter>
     );
-
-
   }
 }
-
 
 const mapStateToProps = function (state) {
   return {
@@ -102,9 +55,6 @@ const mapStateToProps = function (state) {
   };
 };
 
-const mapDispatchToProps = {
-  getUsers,
-  searchAndSortUsers,
-};
+const mapDispatchToProps = {};
 
-export default connect(mapStateToProps, mapDispatchToProps)(GlobalWrapper);
+export default connect(mapStateToProps, mapDispatchToProps)(Router);
