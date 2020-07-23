@@ -3,7 +3,7 @@ import React, {Component} from "react";
 import "../styles/style.css";
 
 import Loader from "../../../shared_components/loader/component/loader";
-import SideMenu from "../../../shared_components/side-menu/side-menu";
+import SideMenu from "../../../shared_components/side-menu/components/side-menu";
 import CustomNav from "../../../shared_components/custom-nav/custom-nav";
 import BackgroundOpacity from "../../../shared_components/background-opacity/background-opacity";
 import CustomDropDown from "../../../shared_components/custom-dropdown/components/custom-dropdown";

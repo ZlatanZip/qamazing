@@ -12,6 +12,7 @@
 
 .custom_nav_logo {
   padding: 0 0.5rem;
+  max-width: 30px;
 }
 
 .custom_nav_bar {
