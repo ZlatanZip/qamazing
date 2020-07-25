@@ -1,13 +1,10 @@
 import React from "react";
-
-import {NavLink} from "react-router-dom";
 import {FaRegUserCircle} from "react-icons/fa";
 
 import "./style.css";
 
 import Logo from "../logo/components/logo";
 import HamburgerButton from "../hamburger-button/hamburger-button";
-import CustomDropDown from "../custom-dropdown/components/custom-dropdown";
 
 const CustomNav = (props) => {
   const {sideMenuToggle, dropDownToggle} = props;
@@ -22,7 +19,7 @@ const CustomNav = (props) => {
         </div>
         <div className='spacer' />
         <div className='custom_nav_bar_items'>
-          <div to='/app/my_profile'>
+          <div>
             <FaRegUserCircle
               size={36}
               className='custom_nav_bar_user_logo'

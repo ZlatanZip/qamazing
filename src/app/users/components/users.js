@@ -4,9 +4,11 @@ import {RiUserAddLine} from "react-icons/ri";
 
 import CustomSearch from "../../../shared_components/custom-search/custom-search";
 import Table from "../../../shared_components/custom-table/custom-table";
-
-import {getUsers, searchAndSortUsers} from "../../users/actions/user-actions";
 import CustomButton from "../../../shared_components/custom-button/custom-button";
+import CustomLogoButton from "../../../shared_components/custom-logo-button/components/custom-logo-button";
+
+import RouteHelpers from "../../../helpers/route-helpers";
+import {getUsers, searchAndSortUsers} from "../../users/actions/user-actions";
 
 import "../styles/style.css";
 
@@ -23,9 +25,14 @@ class Users extends Component {
           <div>
             <h1 className='user_screen_title'>Moppies</h1>
             <div>
-              <RiUserAddLine size={36} color='white' />
+              <RiUserAddLine
+                size={36}
+                color='white'
+                onClick={() => RouteHelpers.goToRoute("/app/add_user")}
+              />
             </div>
           </div>
+
           <CustomSearch
             placeholder=' Search a moppie'
             click={this.searchAndSortUserHandler}

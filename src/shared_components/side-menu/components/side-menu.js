@@ -1,22 +1,26 @@
 import React from "react";
-import {NavLink} from "react-router-dom";
+import {withRouter} from "react-router-dom";
+import RouteHelpers from "../../../helpers/route-helpers";
 
 import sideMenuLinks from "../constants/sideMenuLinks";
 import "../style/style.css";
 
 const SideMenu = (props) => {
-  const {show, url} = props;
+  const {show, url, sideMenuToggle} = props;
   console.log(url);
   const sideMenuClasses = show ? "side_menu open" : "side_menu";
   return (
     <nav className={sideMenuClasses}>
       <ul>
-        {sideMenuLinks.map(({linkText, path}) => {
+        {sideMenuLinks.map(({linkText, fullPath}) => {
           return (
-            <li>
-              <NavLink to={`${url}${path}`} className='link'>
+            <li onClick={sideMenuToggle}>
+              <div
+                onClick={() => RouteHelpers.goToRoute(fullPath)}
+                className='link'
+              >
                 {linkText}
-              </NavLink>
+              </div>
             </li>
           );
         })}
@@ -25,4 +29,4 @@ const SideMenu = (props) => {
   );
 };
 
-export default SideMenu;
+export default withRouter(SideMenu);

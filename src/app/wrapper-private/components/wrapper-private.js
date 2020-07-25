@@ -13,6 +13,9 @@ class WrapperPrivate extends Component {
     sideMenuOpen: false,
     dropDownOpen: false,
   };
+  componentDidMount() {
+    console.log("rerendered");
+  }
 
   sideMenuToggleHandler = () => {
     this.setState((state) => {
@@ -52,7 +55,11 @@ class WrapperPrivate extends Component {
           dropDownToggle={this.dropDownToggleHandler}
           url={url}
         />
-        <SideMenu show={sideMenuOpen} url={url} />
+        <SideMenu
+          show={sideMenuOpen}
+          url={url}
+          sideMenuToggle={this.sideMenuToggleHandler}
+        />
         {backgroundOpacity}
         <CustomDropDown
           show={dropDownOpen}

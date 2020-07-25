@@ -40,14 +40,25 @@ export default {
     {
       name: "users",
       path: "/users",
+      fullPath: "/app/users",
       roles: ["admin", "pr", "dado"],
       component: Users,
     },
     {name: "add-user", path: "/add_user", component: AddUser},
     {name: "user-details", path: "/users/:id", component: UserDetails},
     {name: "my-profile", path: "/my_profile", component: MyProfile},
-    {name: "projects", path: "/projects", component: Projects},
-    {name: "resources", path: "/resources", component: Resources},
+    {
+      name: "projects",
+      path: "/projects",
+      fullPath: "/app/projects",
+      component: Projects,
+    },
+    {
+      name: "resources",
+      path: "/resources",
+      fullPath: "/app/resources",
+      component: Resources,
+    },
     {name: "dashboard", path: "/dashboard", component: Dashboard},
   ],
 };

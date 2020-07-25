@@ -7,6 +7,15 @@ class LocalStorageHelper {
     return accessToken;
   };
 
+  static getUserInfo = () => {
+    return {
+      name: "Zlatan",
+      lastName: "Salihagic",
+      role: "admin",
+      //image:{require('../')}
+    };
+  };
+
   static getRefreshToken = () => {
     const refreshToken = store.getState().auth;
     return refreshToken;

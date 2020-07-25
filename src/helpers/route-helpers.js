@@ -1,26 +1,70 @@
 import React, {Component} from "react";
-import {useHistory, Route, Redirect} from "react-router-dom";
+import {Route, Redirect, withRouter} from "react-router-dom";
+import {createBrowserHistory} from "history";
 
 import LocalStorageHelper from "../helpers/local-storage-helper";
 
 class RouteHelpers {
   static goToRoute = (path, param) => {
-    const history = useHistory();
+    const query = param ? param : "";
+    const history = createBrowserHistory();
+    history.push({pathname: `${path}`, search: `${query}`});
+  };
+  //return(window.location = history.createHref(path));
+  /*   static goToRoute = (path, param) => {
+    return withRouter((props) => {
+      const query = param ? param : "";
+      console.log(path);
+      props.history.push({pathname: `${path}`, search: `${query}`});
+    });
+  }; */
+  /*   withRouter((props) => {
+    const {history, children} = props;
+    return (
+      <div
+        onClick={() => {
+          history.push("/app/users/add_user");
+        }}
+      >
+        {children}
+      </div>
+    );
+  }); */
+
+  /*  return () =>
+      withRouter(
+        ({history}) => console.log(history)
+        //  history.push({pathname: `${path}`, search: `${query}`})
+      ); */
+  /*   static goToRoute = (path, param) => {
+    const history = createBrowserHistory();
     const query = param ? param : "";
     history.push({pathname: `${path}`, search: `${query}`});
   };
-
-  static authorizedRoutesRenderer = ({
-    component: Component,
-    roles,
-    ...rest
-  }) => (
+ */
+  static authorizedRoutesRenderer = (
+    {path, component, roles, ...rest},
+    key
+  ) => (
     <Route
       {...rest}
       render={(props) => {
-        const userInfo = LocalStorageHelper.getUserInfo;
+        const userInfo = LocalStorageHelper.getUserInfo();
 
-        return <Component {...props} />;
+        const url = "/app";
+        if (!userInfo) {
+          return <Redirect to={{pathname: "/"}} />;
+        }
+
+        {
+          /*  if (roles && roles.includes(userInfo.role) === -1) {
+          return <Redirect to={{pathname: "/"}} />;
+        }
+ */
+        }
+        return (
+          <Route key={key} path={`${url}${path}`} component={component} exact />
+        );
       }}
     />
   );
@@ -39,4 +83,4 @@ class RouteHelpers {
   };
 }
 
-export default RouteHelpers;
+export default withRouter(RouteHelpers);

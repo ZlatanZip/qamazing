@@ -1,14 +1,14 @@
 export default [
   {
     linkText: "Users",
-    path: "/users",
+    fullPath: "/app/users",
   },
   {
     linkText: "Projects",
-    path: "/projects",
+    fullPath: "/app/projects",
   },
   {
     linkText: "Resources",
-    path: "/resources",
+    fullPath: "/app/resources",
   },
 ];
