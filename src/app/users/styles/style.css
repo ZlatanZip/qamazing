@@ -1,6 +1,7 @@
 .users_screen {
   text-align: center;
   height: 100vh;
+  margin: 30px;
 }
 
 .user_screen_header {

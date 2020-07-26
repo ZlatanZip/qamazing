@@ -1,43 +1,37 @@
-.responsiveTable {
+.table_wrapper {
   width: 100%;
   font-size: 18px;
   background-color: white;
 }
-
-.responsiveTable td .tdBefore {
+.table_wrapper td .tdBefore {
   display: none;
 }
-
-.thead {
+.table_wrapper th {
   background-color: rgb(31, 30, 30);
   color: white;
   border: 1px solid gray;
 }
 
-.tr:hover {
+.table_row:hover {
   background-color: rgba(233, 138, 138, 0.781);
   cursor: pointer;
 
   border-bottom: 1px solid red;
 }
 @media screen and (max-width: 40em) {
-  /*
-      Force table elements to not behave like tables anymore
-      Hide table headers (but not display: none;, for accessibility)
-    */
-
-  .responsiveTable table,
-  .responsiveTable thead,
-  .responsiveTable tbody,
-  .responsiveTable th,
-  .responsiveTable td,
-  .responsiveTable tr {
+  .table_wrapper table,
+  .table_wrapper thead,
+  .table_wrapper tbody,
+  .table_wrapper th,
+  .table_wrapper td,
+  .table_wrapper tr {
     display: block;
     font-size: 18px;
     border: 1px solid gray;
+    margin-bottom: 25px;
   }
 
-  .responsiveTable thead tr {
+  .table_wrapper thead tr {
     background-color: white;
     position: absolute;
     top: -9999px;
@@ -45,7 +39,7 @@
     border-bottom: 2px solid #333;
   }
 
-  .responsiveTable thead tr:hover {
+  .table_wrapper thead tr:hover {
     background-color: rgba(255, 99, 71, 0.342);
     cursor: pointer;
     position: absolute;
@@ -54,12 +48,12 @@
     border-bottom: 2px solid #333;
   }
 
-  .responsiveTable tbody tr {
+  .table_wrapper tbody tr {
     border: 1px solid #000;
     padding: 0.25em;
   }
 
-  .responsiveTable td.pivoted {
+  .table_wrapper td.pivoted {
     /* Behave like a "row" */
     border: none !important;
     position: relative;
@@ -69,7 +63,7 @@
     overflow-wrap: break-word;
   }
 
-  .responsiveTable td .tdBefore {
+  .table_wrapper td .tdBefore {
     /* Now like a table header */
     position: absolute;
     display: block;

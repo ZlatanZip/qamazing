@@ -27,12 +27,6 @@
   grid-area: footer;
 }
 
-.center {
-  height: 80vh;
-  padding: 5vh;
-  background: black;
-}
-
 .grid-container {
   display: grid;
   grid-template-columns: 60px 20% auto;

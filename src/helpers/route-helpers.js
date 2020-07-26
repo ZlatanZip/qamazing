@@ -8,7 +8,8 @@ class RouteHelpers {
   static goToRoute = (path, param) => {
     const query = param ? param : "";
     const history = createBrowserHistory();
-    history.push({pathname: `${path}`, search: `${query}`});
+    return (window.location = history.createHref(path));
+    //history.push({pathname: `${path}`, search: `${query}`});
   };
   //return(window.location = history.createHref(path));
   /*   static goToRoute = (path, param) => {

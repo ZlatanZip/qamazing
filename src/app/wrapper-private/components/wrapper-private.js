@@ -67,7 +67,7 @@ class WrapperPrivate extends Component {
           email='zlatan.salihagic@mop.ba'
           dropDownToggle={this.dropDownToggleHandler}
         />
-        <div className='center'>
+        <div className='wrapper_private_content'>
           {children}
           {loader && <Loader text='users' />}
         </div>

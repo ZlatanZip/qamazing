@@ -2,7 +2,6 @@ import React, {Component} from "react";
 import {connect} from "react-redux";
 
 import CustomSearch from "../../../shared_components/custom-search/custom-search";
-import Table from "../../../shared_components/custom-table/custom-table";
 
 import {getUsers, searchAndSortUsers} from "../../users/actions/user-actions";
 
@@ -32,7 +31,6 @@ class Resources extends Component {
             onChange={this.onChange}
           />
         </div>
-        <Table users={users} />
       </div>
     );
   }
