@@ -7,6 +7,7 @@ import Table from "../../../shared_components/custom-table/components/custom-tab
 import CustomButton from "../../../shared_components/custom-button/custom-button";
 import CustomLogoButton from "../../../shared_components/custom-logo-button/components/custom-logo-button";
 
+import UserConstants from "../constants/user-constants";
 import RouteHelpers from "../../../helpers/route-helpers";
 import {getUsers, searchAndSortUsers} from "../../users/actions/user-actions";
 
@@ -15,15 +16,15 @@ import "../styles/style.css";
 class Users extends Component {
   componentDidMount() {
     const {getUsers} = this.props;
-    getUsers("helo");
+    getUsers();
   }
   render() {
     const {users, loader} = this.props;
     return (
-      <div className='users_screen'>
+      <div className='users_screen '>
         <div className='user_screen_header'>
           <div>
-            <h1 className='user_screen_title'>Moppies</h1>
+            <h1 className='user_screen_title'>{UserConstants.userPageTitle}</h1>
             <div>
               <RiUserAddLine
                 size={36}
@@ -34,7 +35,8 @@ class Users extends Component {
           </div>
 
           <CustomSearch
-            placeholder=' Search a moppie'
+            buttonText={UserConstants.customSearch.buttonText}
+            placeholder={UserConstants.customSearch.placeholder}
             click={this.searchAndSortUserHandler}
             onChange={this.onChange}
           />
@@ -42,7 +44,7 @@ class Users extends Component {
 
         <Table tableData={users} />
         <div>
-          <CustomButton buttonText='Load More' />
+          <CustomButton buttonText={UserConstants.loadUsersButtonText} />
         </div>
       </div>
     );

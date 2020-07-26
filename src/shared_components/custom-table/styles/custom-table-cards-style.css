@@ -12,11 +12,11 @@
 }
 
 .table_card_content_wrapper {
-  display: none;
+  display: flex;
   background-color: white;
   justify-content: space-around;
   height: 0;
-
+  opacity: 0;
   transition: height 0.8s ease-out;
 }
 
@@ -24,7 +24,7 @@
   background-color: white;
   justify-content: space-around;
   display: flex;
-
+  opacity: 1;
   height: 100vh;
 }
 

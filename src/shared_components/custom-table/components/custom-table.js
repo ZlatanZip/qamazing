@@ -9,11 +9,14 @@ import "../styles/style.css";
 
 const myTable = (props) => {
   const {tableData} = props;
-
+  console.log(tableData);
   const tableHeaderText = () => {
-    const item = tableData.map((data) => {
-      return Object.keys(data);
-    });
+    const item =
+      tableData &&
+      tableData.map((data) => {
+        return Object.keys(data);
+      });
+    console.log(item[0]);
     return item[0];
   };
 
@@ -34,7 +37,6 @@ const myTable = (props) => {
 
   const RenderTableData = ({data}) => {
     const keys = Object.keys(data);
-    console.log(keys);
     return keys.map((key, index) => {
       return (
         <td
@@ -50,7 +52,7 @@ const myTable = (props) => {
   };
 
   const RenderTableRow = (data) => {
-    return data.map((dataItem, index) => {
+    return data.slice(0, 9).map((dataItem, index) => {
       return (
         <tr className='table_row' key={index}>
           <RenderTableData key={index} data={dataItem} />

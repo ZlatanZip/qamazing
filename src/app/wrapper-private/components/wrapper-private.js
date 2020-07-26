@@ -17,7 +17,24 @@ class WrapperPrivate extends Component {
     console.log("rerendered");
   }
 
+  closeMenuWhenNotUsedHandler = () => {
+    this.setState((state) => {
+      return {
+        sideMenuOpen: !state.sideMenuOpen,
+      };
+    });
+  };
+
+  closeDropDownWhenNotUsedHandler = () => {
+    this.setState((state) => {
+      return {
+        dropDownOpen: !state.dropDownOpen,
+      };
+    });
+  };
+
   sideMenuToggleHandler = () => {
+    setTimeout(this.closeMenuWhenNotUsedHandler, 5000);
     this.setState((state) => {
       return {
         sideMenuOpen: !state.sideMenuOpen,
@@ -26,6 +43,7 @@ class WrapperPrivate extends Component {
   };
 
   dropDownToggleHandler = () => {
+    setTimeout(this.closeDropDownWhenNotUsedHandler, 5000);
     this.setState((state) => {
       return {
         dropDownOpen: !state.dropDownOpen,
@@ -49,7 +67,7 @@ class WrapperPrivate extends Component {
     }
 
     return (
-      <div className='wrapper_private'>
+      <div className='wrapper_private wrapper_background'>
         <CustomNav
           sideMenuToggle={this.sideMenuToggleHandler}
           dropDownToggle={this.dropDownToggleHandler}
