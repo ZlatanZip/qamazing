@@ -1,48 +1,18 @@
 import React, {Component} from "react";
 import {Route, Redirect, withRouter} from "react-router-dom";
-import {createBrowserHistory} from "history";
+import {browserHistory} from "react-router";
+import history from "../app/global-wrapper/history/history";
 
 import LocalStorageHelper from "../helpers/local-storage-helper";
+import Users from "../app/users/components/users";
 
-class RouteHelpers {
+class RouteHelpers extends Component {
   static goToRoute = (path, param) => {
     const query = param ? param : "";
-    const history = createBrowserHistory();
-    return (window.location = history.createHref(path));
-    //history.push({pathname: `${path}`, search: `${query}`});
+    //debugger;
+    return history.push({pathname: `${path}`, search: `${query}`}, {});
   };
-  //return(window.location = history.createHref(path));
-  /*   static goToRoute = (path, param) => {
-    return withRouter((props) => {
-      const query = param ? param : "";
-      console.log(path);
-      props.history.push({pathname: `${path}`, search: `${query}`});
-    });
-  }; */
-  /*   withRouter((props) => {
-    const {history, children} = props;
-    return (
-      <div
-        onClick={() => {
-          history.push("/app/users/add_user");
-        }}
-      >
-        {children}
-      </div>
-    );
-  }); */
 
-  /*  return () =>
-      withRouter(
-        ({history}) => console.log(history)
-        //  history.push({pathname: `${path}`, search: `${query}`})
-      ); */
-  /*   static goToRoute = (path, param) => {
-    const history = createBrowserHistory();
-    const query = param ? param : "";
-    history.push({pathname: `${path}`, search: `${query}`});
-  };
- */
   static authorizedRoutesRenderer = (
     {path, component, roles, ...rest},
     key

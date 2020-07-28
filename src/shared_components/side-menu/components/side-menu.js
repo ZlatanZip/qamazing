@@ -6,8 +6,8 @@ import sideMenuLinks from "../constants/sideMenuLinks";
 import "../style/style.css";
 
 const SideMenu = (props) => {
-  const {show, url, sideMenuToggle} = props;
-  console.log(url);
+  const {show, url, sideMenuToggle, history} = props;
+
   const sideMenuClasses = show ? "side_menu open" : "side_menu";
   return (
     <nav className={sideMenuClasses}>

@@ -1,10 +1,51 @@
 import React from "react";
+import {BrowserRouter, Route, Switch} from "react-router-dom";
 
 const AddUser = () => {
   return (
-    <div>
-      <h1> Hello Add User Screen</h1>
-    </div>
+    <BrowserRouter>
+      <PublicWrapper url={url}>
+        <Switch>
+          <Route path component />
+          <Route path component />
+          <Route path component />
+          <Route path component />
+          <Route path component />
+          <Route path component />
+          <Route path component />
+          <Route path component />
+          <Route path component />
+          <Route path component />
+          <Route path component />
+          <Route path component />
+          <Route path component />
+          <Route path component />
+
+          <Route path component />
+        </Switch>
+      </PublicWrapper>
+      <PrivateWrapper url={url}>
+        <Switth>
+          <Route path component />
+          <Route path component />
+          <Route path component />
+          <Route path component />
+          <Route path component />
+          <Route path component />
+          <Route path component />
+
+          <Route path component />
+          <Route path component />
+          <Route path component />
+
+          <Route path component />
+          <Route path component />
+          <Route path component />
+          <Route path component />
+          <Route path component />
+        </Switth>
+      </PrivateWrapper>
+    </BrowserRouter>
   );
 };
 

@@ -5,7 +5,7 @@ import "../styles/style.css";
 
 const WrapperPublic = (props) => {
   const {children, location} = props;
-  console.log(props);
+
   const showPhotoLeft = location.pathname === "/" ? true : false;
   return (
     <div className='wrapper_public'>

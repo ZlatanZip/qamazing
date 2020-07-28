@@ -1,8 +1,8 @@
 import React, {Component} from "react";
 import {connect} from "react-redux";
-import {createBrowserHistory} from "history";
 
-import {Route, BrowserRouter, Switch} from "react-router-dom";
+import {Route, BrowserRouter as Router, Switch} from "react-router-dom";
+import history from "../history/history";
 
 import PrivateWrapper from "../../wrapper-private/components/wrapper-private";
 import PublicWrapper from "../../wrapper-public/components/wrapper-public";
@@ -13,22 +13,27 @@ import RouteHelpers from "../../../helpers/route-helpers";
 
 import "../styles/style.css";
 
-const Router = () => {
-  const history = createBrowserHistory();
+const Routers = () => {
+  /*  const his = 
+  const urlLisntener = history.listen((props) => {
+    console.log(props.location.pathname);
+  }); */
   return (
-    <BrowserRouter history={history}>
+    <Router history={history}>
       <Route
         path='/'
-        render={({match: {url}}) => (
+        render={({history, match: {url}}) => (
           <>
-            <PublicWrapper url={url}>
-              {RouteHelpers.routeRenderer(routeConstants.publicRoutes, url)}
+            <PublicWrapper url={url} history={history}>
+              <Switch>
+                {RouteHelpers.routeRenderer(routeConstants.publicRoutes, url)}
+              </Switch>
             </PublicWrapper>
             <Route
               path='/app'
               render={({match: {url}}) => (
                 <>
-                  <PrivateWrapper url={url}>
+                  <PrivateWrapper url={url} history={history}>
                     <Switch>
                       {RouteHelpers.routeRenderer(
                         routeConstants.privateRoutes,
@@ -42,8 +47,8 @@ const Router = () => {
           </>
         )}
       />
-    </BrowserRouter>
+    </Router>
   );
 };
 
-export default Router;
+export default Routers;
