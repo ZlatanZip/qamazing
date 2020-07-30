@@ -1,7 +1,5 @@
 import React from "react";
-import { reduxForm, Field } from "redux-form";
-import GoogleLogin from "react-google-login";
-import { useHistory } from "react-router-dom";
+import {reduxForm, Field} from "redux-form";
 
 import CustomButton from "../../../shared_components/custom-button/custom-button";
 import CustomInput from "../../../shared_components/custom-input/custom-input";
@@ -17,22 +15,11 @@ const required = (v) => {
 };
 
 const LoginForm = (props) => {
-  const { handleSubmit, valid } = props;
+  const {handleSubmit, valid} = props;
 
-  let history = useHistory();
-
-  const googleRespose = (res) => {
-    const googleResponseData = {
-      name: res.profileObj.name,
-      email: res.profileObj.email,
-    };
-    console.log(res);
-    console.log(res.profileObj);
-    history.push("/login");
-  };
   return (
-    <form onSubmit={handleSubmit} className="form_fields">
-      <h1 className="form_title">{formConstants.formTitle}</h1>
+    <form onSubmit={handleSubmit} className='form_fields'>
+      <h1 className='form_title'>{formConstants.formTitle}</h1>
       <Field
         name={formConstants.formFields.fullName}
         component={CustomInput}
@@ -64,12 +51,12 @@ const LoginForm = (props) => {
 
       <CustomButton
         buttonText={formConstants.buttonText.saveButton}
-        buttonType="submit"
+        buttonType='submit'
         disabled={!valid}
       />
       <CustomButton
         buttonText={formConstants.buttonText.cancleButton}
-        buttonType="submit"
+        buttonType='submit'
         disabled={!valid}
       />
     </form>

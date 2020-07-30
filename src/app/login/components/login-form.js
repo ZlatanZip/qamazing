@@ -1,12 +1,13 @@
 import React, {useState} from "react";
 import {useDispatch} from "react-redux";
 import {reduxForm, Field} from "redux-form";
-import {useHistory} from "react-router-dom";
 import GoogleLogin from "react-google-login";
 
-import {store} from "../../../base/store";
 import CustomButton from "../../../shared_components/custom-button/custom-button";
 import CustomInput from "../../../shared_components/custom-input/custom-input";
+
+import RouteHelpers from "../../../helpers/route-helpers";
+import routeConstants from "../../../base/router/routes-constants";
 import formConstants from "../constants/form-constants";
 
 import {login} from "../actions/login-action";
@@ -22,10 +23,9 @@ const required = (v) => {
 
 const LoginForm = (props) => {
   const {handleSubmit, valid, children} = props;
-  console.log(children);
+
   const [user, setUser] = useState();
   const dispatch = useDispatch();
-  let history = useHistory();
 
   const googleRespose = (res) => {
     const googleResponseData = {
@@ -34,9 +34,9 @@ const LoginForm = (props) => {
     };
     const user = res.tokenObj.access_token;
     loginHandler(user);
-    // console.log(res);
-    console.log(res.tokenObj.access_token);
-    history.push("/app/dashboard");
+    if (googleResponseData) {
+      RouteHelpers.goToRoute(routeConstants.privateRoutes.dashboard.fullPath);
+    }
   };
 
   const loginHandler = async (data) => {

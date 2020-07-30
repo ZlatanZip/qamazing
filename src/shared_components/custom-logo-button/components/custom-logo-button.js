@@ -1,12 +1,13 @@
 import React from "react";
 import {withRouter} from "react-router-dom";
+import RouteHelpers from "../../../helpers/route-helpers";
 
 const CustomLogoButton = withRouter((props) => {
-  const {history, children, path} = props;
+  const {children, path} = props;
   return (
     <div
       onClick={() => {
-        history.push({path});
+        RouteHelpers.goToRoute(path);
       }}
     >
       {children}

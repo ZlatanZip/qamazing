@@ -1,7 +1,5 @@
 import React from "react";
-import { reduxForm, Field } from "redux-form";
-import GoogleLogin from "react-google-login";
-import { useHistory } from "react-router-dom";
+import {reduxForm, Field} from "redux-form";
 
 import CustomButton from "../../../shared_components/custom-button/custom-button";
 import CustomInput from "../../../shared_components/custom-input/custom-input";
@@ -17,23 +15,12 @@ const required = (v) => {
 };
 
 const LoginForm = (props) => {
-  const { handleSubmit, valid } = props;
+  const {handleSubmit, valid} = props;
 
-  let history = useHistory();
-
-  const googleRespose = (res) => {
-    const googleResponseData = {
-      name: res.profileObj.name,
-      email: res.profileObj.email,
-    };
-    console.log(res);
-    console.log(res.profileObj);
-    history.push("/login");
-  };
   return (
-    <div className="form_center">
-      <form onSubmit={handleSubmit} className="form_fields">
-        <h1 className="form_title">{formConstants.formTitle}</h1>
+    <div className='form_center'>
+      <form onSubmit={handleSubmit} className='form_fields'>
+        <h1 className='form_title'>{formConstants.formTitle}</h1>
         <Field
           name={formConstants.formFields.fullName}
           component={CustomInput}
@@ -65,11 +52,11 @@ const LoginForm = (props) => {
 
         <CustomButton
           buttonText={formConstants.buttonText}
-          buttonType="submit"
+          buttonType='submit'
           disabled={!valid}
         />
 
-        <a className="form_anchor">{formConstants.anchorText}?</a>
+        <a className='form_anchor'>{formConstants.anchorText}?</a>
         {/*  <GoogleLogin
           style={{ background: "red" }}
           clientId="184114775759-9ovjrh0n1rcflc8f75q4gv2o0d9a8ms7.apps.googleusercontent.com"

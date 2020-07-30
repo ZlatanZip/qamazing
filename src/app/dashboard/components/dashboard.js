@@ -1,5 +1,8 @@
 import React from "react";
-import {Link} from "react-router-dom";
+
+import RouteHelpers from "../../../helpers/route-helpers";
+import routeConstants from "../../../base/router/routes-constants";
+
 import "../styles/style.css";
 
 const Dashboard = () => {
@@ -7,17 +10,36 @@ const Dashboard = () => {
     <div className='dashboard_wrapper'>
       <h1>Dashboard</h1>
       <div className='dashboard_icons_wrapper'>
-        <Link className='dashboard_icons' to='/app/users'>
+        <div
+          className='dashboard_icons'
+          onClick={() =>
+            RouteHelpers.goToRoute(routeConstants.privateRoutes.users.fullPath)
+          }
+        >
           <h1>Moppies</h1>
-        </Link>
+        </div>
       </div>
       <div className='dashboard_icons_wrapper'>
-        <Link className='dashboard_icons' to='/app/projects'>
+        <div
+          className='dashboard_icons'
+          onClick={() =>
+            RouteHelpers.goToRoute(
+              routeConstants.privateRoutes.projects.fullPath
+            )
+          }
+        >
           <h1>Projects</h1>
-        </Link>
-        <Link className='dashboard_icons' to='/app/resources'>
+        </div>
+        <div
+          className='dashboard_icons'
+          onClick={() =>
+            RouteHelpers.goToRoute(
+              routeConstants.privateRoutes.resources.fullPath
+            )
+          }
+        >
           <h1>Resources</h1>
-        </Link>
+        </div>
       </div>
     </div>
   );

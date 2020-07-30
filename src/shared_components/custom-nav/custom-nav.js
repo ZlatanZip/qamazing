@@ -1,6 +1,8 @@
 import React from "react";
 import {FaRegUserCircle} from "react-icons/fa";
 
+import routeConstants from "../../base/router/routes-constants";
+
 import "./style.css";
 
 import Logo from "../logo/components/logo";
@@ -15,7 +17,7 @@ const CustomNav = (props) => {
           <HamburgerButton click={sideMenuToggle} />
         </div>
         <div className='custom_nav_logo'>
-          <Logo />
+          <Logo path={routeConstants.privateRoutes.dashboard.fullPath} />
         </div>
         <div className='spacer' />
         <div className='custom_nav_bar_items'>

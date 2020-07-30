@@ -3,7 +3,6 @@
   justify-content: center;
   align-items: center;
   height: 100vh;
-  background-color: white;
 }
 
 .form_title {
@@ -14,9 +13,10 @@
 .form_fields {
   text-align: center;
   min-width: 400px;
-
+  border: 1px solid rgba(128, 128, 128, 0.39);
   padding: 3vh;
   border-radius: 10px;
+  background-color: black;
 }
 
 .form_field_label {

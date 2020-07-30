@@ -6,7 +6,7 @@
 }
 
 .wrapper_background {
-  background-image: url("../../../assets/logo_bakground.png");
+  background-image: url("../../../common/assets/logo_background.png");
   background-size: contain;
   background-repeat: no-repeat;
   background-position-x: right;

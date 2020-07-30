@@ -1,7 +1,5 @@
 import React from "react";
 import {reduxForm, Field} from "redux-form";
-import GoogleLogin from "react-google-login";
-import {useHistory} from "react-router-dom";
 
 import CustomButton from "../../../shared_components/custom-button/custom-button";
 import CustomInput from "../../../shared_components/custom-input/custom-input";
@@ -19,17 +17,6 @@ const required = (v) => {
 const LoginForm = (props) => {
   const {handleSubmit, valid} = props;
 
-  let history = useHistory();
-
-  const googleRespose = (res) => {
-    const googleResponseData = {
-      name: res.profileObj.name,
-      email: res.profileObj.email,
-    };
-    console.log(res);
-    console.log(res.profileObj);
-    history.push("/login");
-  };
   return (
     <div className='form_center'>
       <form onSubmit={handleSubmit} className='form_fields'>

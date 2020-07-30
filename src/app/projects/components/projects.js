@@ -16,7 +16,7 @@ class Projects extends Component {
         componentToRender: component,
       };
     }); */
-    console.log("projects");
+
     getUsers("helo");
   }
   render() {

@@ -1,16 +1,13 @@
 import React, {Component} from "react";
 import {Route, Redirect, withRouter} from "react-router-dom";
-import {browserHistory} from "react-router";
-import history from "../app/global-wrapper/history/history";
 
+import myHistory from "../base/router/history";
 import LocalStorageHelper from "../helpers/local-storage-helper";
-import Users from "../app/users/components/users";
 
 class RouteHelpers extends Component {
   static goToRoute = (path, param) => {
     const query = param ? param : "";
-    //debugger;
-    return history.push({pathname: `${path}`, search: `${query}`}, {});
+    myHistory.push({pathname: `${path}`, search: `${query}`}, {});
   };
 
   static authorizedRoutesRenderer = (
@@ -41,7 +38,7 @@ class RouteHelpers extends Component {
   );
 
   static routeRenderer = (routes, url) => {
-    return routes.map((route, key) => {
+    return Object.values(routes).map((route, key) => {
       return (
         <Route
           key={key}

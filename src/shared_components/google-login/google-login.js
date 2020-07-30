@@ -1,7 +1,6 @@
 import React from "react";
 
-const GoogleLogin = ({ googleRespose }) => {
-  console.log(googleRespose, " hello");
+const GoogleLogin = ({googleRespose}) => {
   return (
     <div>
       {/*  <GoogleLogin

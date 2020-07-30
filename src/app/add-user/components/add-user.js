@@ -101,14 +101,14 @@ const AddUser = () => {
         <Field
           name='contract_start'
           component={CustomInput}
-          label='User Name'
+          label='Contract Starting Date'
           placeholder='Enter users name'
           errorText='Name is required'
         />
         <Field
           name='contract_end'
           component={CustomInput}
-          label='User Name'
+          label='Contract Ending Date'
           placeholder='Enter users name'
           errorText='Name is required'
         />

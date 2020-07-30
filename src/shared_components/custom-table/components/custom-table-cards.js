@@ -13,8 +13,6 @@ const TableCards = (props) => {
   const values = Object.values(data);
   const valueLength = values.length;
 
-  console.log(titles);
-  console.log(values);
   return (
     <div
       className='table_card_wrapper'

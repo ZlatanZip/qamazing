@@ -9,19 +9,15 @@ import "../styles/style.css";
 
 const myTable = (props) => {
   const {tableData} = props;
-  console.log(tableData);
+
   const tableHeaderText = () => {
     const item =
       tableData &&
       tableData.map((data) => {
         return Object.keys(data);
       });
-    console.log(item[0]);
-    return item[0];
-  };
 
-  const divSelectData = (data) => {
-    return RouteHelpers.goToRoute(data);
+    return item[0];
   };
 
   const RenderTableHeader = ({data}) => {
@@ -42,7 +38,9 @@ const myTable = (props) => {
         <td
           key={index}
           onClick={() =>
-            divSelectData(`${tableConstants.tablePaths.userPath}${data.id}`)
+            RouteHelpers.goToRoute(
+              `${tableConstants.tablePaths.userPath}${data.id}`
+            )
           }
         >
           {data[key]}

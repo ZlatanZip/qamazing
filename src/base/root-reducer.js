@@ -1,5 +1,6 @@
-import { combineReducers } from "redux";
-import { reducer as formReducer } from "redux-form";
+import {combineReducers} from "redux";
+import {reducer as formReducer} from "redux-form";
+import {routerReducer as routing} from "react-router-redux";
 
 import loaderReducer from "../shared_components/loader/reducers/loader-reducer";
 import loginReducer from "../app/login/reducers/login-reducer";
@@ -14,6 +15,7 @@ const rootReducer = combineReducers({
   auth: authReducer,
   registerReducer,
   form: formReducer,
+  routing,
 });
 
 export default rootReducer;

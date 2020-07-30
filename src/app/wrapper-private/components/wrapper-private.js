@@ -1,23 +1,40 @@
 import React, {Component} from "react";
-
-import "../styles/style.css";
+import {Route} from "react-router-dom";
 
 import Loader from "../../../shared_components/loader/component/loader";
 import SideMenu from "../../../shared_components/side-menu/components/side-menu";
 import CustomNav from "../../../shared_components/custom-nav/custom-nav";
 import BackgroundOpacity from "../../../shared_components/background-opacity/background-opacity";
 import CustomDropDown from "../../../shared_components/custom-dropdown/components/custom-dropdown";
-import {FaWeight} from "react-icons/fa";
-import {withRouter} from "react-router-dom";
+
+import LocalStorageHelper from "../../../helpers/local-storage-helper";
+import RouteHelpers from "../../../helpers/route-helpers";
+
+import routeConstants from "../../../base/router/routes-constants";
+
+import "../styles/style.css";
+
+const PrivateRoutes = (props) => {
+  const {children} = props;
+  const token = LocalStorageHelper.getAccessToken();
+  return (
+    <Route
+      render={() => {
+        if (token) {
+          return children;
+        } else {
+          RouteHelpers.goToRoute(routeConstants.publicRoutes.login.fullPath);
+        }
+      }}
+    />
+  );
+};
 
 class WrapperPrivate extends Component {
   state = {
     sideMenuOpen: false,
     dropDownOpen: false,
   };
-  componentDidMount() {
-    console.log(this.props);
-  }
 
   closeMenuWhenNotUsedHandler = () => {
     if (!this.state.sideMenuOpen) this.setState({sideMenuOpen: false});
@@ -54,26 +71,11 @@ class WrapperPrivate extends Component {
     return this.forceUpdate();
   };
   render() {
-    const {children, loader, url, history} = this.props;
+    const {children, loader, url} = this.props;
     const {sideMenuOpen, dropDownOpen} = this.state;
-    /*   let urla = window.location.href;
-    console.log(urla); forceUpdate() */
+
     let urls = window.location.href;
-    /* 
-    ["click", "popstate", "onload"].forEach((evt) =>
-      window.addEventListener(
-        evt,
-        function (as) {
-          requestAnimationFrame(() => {
-            if (urls !== this.location.href) {
-              console.log("hello from nested lolly");
-            }
-            urls = this.location.href;
-          });
-        },
-        true
-      )
-    ); */
+
     let backgroundOpacity;
     if (sideMenuOpen) {
       backgroundOpacity = (
@@ -86,7 +88,6 @@ class WrapperPrivate extends Component {
         <CustomNav
           sideMenuToggle={this.sideMenuToggleHandler}
           dropDownToggle={this.dropDownToggleHandler}
-          url={url}
         />
         <SideMenu
           show={sideMenuOpen}

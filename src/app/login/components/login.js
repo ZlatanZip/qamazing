@@ -14,27 +14,9 @@ class Login extends Component {
       password: "",
       loginErrors: "",
     };
-    //this.googleResponse = this.googleResponse.bind(this);
   }
-  /*   googleResponse(res) {
-    const googleResponseData = {
-      name: res.profileObj.name,
-      email: res.profileObj.email,
-    };
-    const user = res.profileObj;
-     loginHandler(user);
-    // console.log(res);
-    console.log(res.profileObj);
-    // history.push("/dashboard");
-  }
-
-   const loginHandler = async (data) => {
-    await dispatch(login(data));
-  }; */
 
   handleChange = (event) => {
-    console.log(event.target.value);
-
     this.setState({
       [event.target.name]: event.target.value,
     });
@@ -50,7 +32,7 @@ class Login extends Component {
 
   render() {
     const {data, logins} = this.props;
-    console.log(data);
+
     return (
       <div className='form_center'>
         {/*  {data} */}
@@ -62,7 +44,7 @@ class Login extends Component {
     );
   }
 }
-//test change
+
 const mapStateToProps = function (state) {
   return {
     data: state.auth.authField,

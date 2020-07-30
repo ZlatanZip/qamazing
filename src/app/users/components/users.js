@@ -5,10 +5,12 @@ import {RiUserAddLine} from "react-icons/ri";
 import CustomSearch from "../../../shared_components/custom-search/custom-search";
 import Table from "../../../shared_components/custom-table/components/custom-table";
 import CustomButton from "../../../shared_components/custom-button/custom-button";
-import CustomLogoButton from "../../../shared_components/custom-logo-button/components/custom-logo-button";
 
 import UserConstants from "../constants/user-constants";
 import RouteHelpers from "../../../helpers/route-helpers";
+
+import routeConstants from "../../../base/router/routes-constants";
+
 import {getUsers, searchAndSortUsers} from "../../users/actions/user-actions";
 
 import "../styles/style.css";
@@ -29,7 +31,11 @@ class Users extends Component {
               <RiUserAddLine
                 size={36}
                 color='white'
-                onClick={() => RouteHelpers.goToRoute("/app/add_user")}
+                onClick={() =>
+                  RouteHelpers.goToRoute(
+                    routeConstants.privateRoutes.addUser.fullPath
+                  )
+                }
               />
             </div>
           </div>
