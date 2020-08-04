@@ -11,6 +11,7 @@ import RouteHelpers from "../../../helpers/route-helpers";
 import routeConstants from "../../../base/router/routes-constants";
 import formConstants from "../constants/form-constants";
 
+import LoginGoogle from "../../../shared_components/google-login/google-login";
 import {login} from "../actions/login-action";
 
 import "../styles/style.css";
@@ -23,22 +24,9 @@ const required = (v) => {
 };
 
 const LoginForm = (props) => {
-  const {handleSubmit, valid, children} = props;
+  const {handleSubmit} = props;
 
-  const [user, setUser] = useState();
   const dispatch = useDispatch();
-
-  const googleRespose = (res) => {
-    const googleResponseData = {
-      name: res.profileObj.name,
-      email: res.profileObj.email,
-    };
-    const user = res.tokenObj.access_token;
-    loginHandler(user);
-    if (googleResponseData) {
-      RouteHelpers.goToRoute(routeConstants.privateRoutes.dashboard.fullPath);
-    }
-  };
 
   const loginHandler = async (data) => {
     await dispatch(login(data));
@@ -76,16 +64,7 @@ const LoginForm = (props) => {
       <a className='form_anchor'>{formConstants.anchorText}</a>
       {user && <h1 className='form_title'>{user}</h1>}
       <div style={{borderRadius: "25px", overflow: "hidden"}}>
-        {/*  {children}*/}
-
-        <GoogleLogin
-          style={{background: "red"}}
-          clientId='184114775759-9ovjrh0n1rcflc8f75q4gv2o0d9a8ms7.apps.googleusercontent.com'
-          buttonText='Login'
-          onSuccess={googleRespose}
-          onFailure={googleRespose}
-          cookiePolicy={"single_host_origin"}
-        />
+        <LoginGoogle login={loginHandler} />
       </div>
     </form>
   );
