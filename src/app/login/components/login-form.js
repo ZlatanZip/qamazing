@@ -62,14 +62,7 @@ const LoginForm = (props) => {
 
       <CustomButton buttonText={formConstants.buttonText} buttonType='submit' />
       <a className='form_anchor'>{formConstants.anchorText}</a>
-      <CustomButton
-        buttonText='Simulated Login'
-        click={() =>
-          RouteHelpers.goToRoute(
-            routeConstants.privateRoutes.dashboard.fullPath
-          )
-        }
-      />
+
       <div style={{borderRadius: "25px", overflow: "hidden"}}>
         <LoginGoogle login={loginHandler} />
       </div>
