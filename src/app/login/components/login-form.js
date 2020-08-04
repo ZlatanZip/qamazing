@@ -3,6 +3,7 @@ import {useDispatch} from "react-redux";
 import {reduxForm, Field} from "redux-form";
 import GoogleLogin from "react-google-login";
 
+import Logo from "../../../shared_components/logo/components/logo";
 import CustomButton from "../../../shared_components/custom-button/custom-button";
 import CustomInput from "../../../shared_components/custom-input/custom-input";
 
@@ -46,21 +47,13 @@ const LoginForm = (props) => {
   return (
     <form onSubmit={handleSubmit} className='form_fields'>
       <div>
-        <img
-          className='logo-badge'
-          src='//ministryofprogramming.com/_assets/images/mop-logo-badge-cf9e20233d.svg'
-          alt='Ministry of Programming'
-        />
-        <img
-          id='logo-white'
-          className='logo-text-white'
-          src='//ministryofprogramming.com/_assets/images/mop-logo-text-white-b7f18a19d9.svg'
-          alt='Ministry of Programming'
-        />
+        <Logo />
       </div>
       <h1 className='form_title'>{formConstants.formTitle}</h1>
 
       <Field
+        id='email'
+        type='email'
         name={formConstants.formFields.emailField}
         component={CustomInput}
         validate={required}
@@ -69,6 +62,8 @@ const LoginForm = (props) => {
         errorText={formConstants.errorTexts.emailErrorText}
       />
       <Field
+        id='password'
+        type='password'
         name={formConstants.formFields.passwordField}
         component={CustomInput}
         validate={required}
@@ -76,6 +71,7 @@ const LoginForm = (props) => {
         placeholder={formConstants.placeholders.passwordPlaceholder}
         errorText={formConstants.errorTexts.passwordErrorText}
       />
+
       <CustomButton buttonText={formConstants.buttonText} buttonType='submit' />
       <a className='form_anchor'>{formConstants.anchorText}</a>
       {user && <h1 className='form_title'>{user}</h1>}

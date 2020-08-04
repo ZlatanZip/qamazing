@@ -13,6 +13,8 @@ import MyProfile from "../../app/my-profile/components/my-profile";
 import Projects from "../../app/projects/components/projects";
 import Resources from "../../app/resources/components/resources";
 
+import Roles from "./role-constants";
+
 export default {
   publicRoutes: {
     login: {
@@ -20,21 +22,49 @@ export default {
       path: "/",
       fullPath: "/",
       component: Login,
-      image:
-        "https://scontent-lht6-1.cdninstagram.com/v/t51.2885-15/e35/s1080x1080/100931756_248081899953714_1631715989982514868_n.jpg?_nc_ht=scontent-lht6-1.cdninstagram.com&amp;_nc_cat=106&amp;_nc_ohc=tQtzcQ-AhjkAX-eIT28&amp;oh=a684441d2cfa760c8f858635b452e69a&amp;oe=5F403FCA",
+      roles: [
+        Roles.admin,
+        Roles.humanResources,
+        Roles.officeManager,
+        Roles.projectManager,
+      ],
     },
-
-    register: {name: "register", path: "register", component: Register},
+    register: {
+      name: "register",
+      path: "register",
+      fullPath: "/register",
+      component: Register,
+      roles: [
+        Roles.admin,
+        Roles.humanResources,
+        Roles.officeManager,
+        Roles.projectManager,
+      ],
+    },
 
     forgotPassword: {
       name: "forgot-password",
-      path: "/forgot-password",
+      path: "forgot-password",
+      fullPath: "/forgot-password",
       component: ForgotPassword,
+      roles: [
+        Roles.admin,
+        Roles.humanResources,
+        Roles.officeManager,
+        Roles.projectManager,
+      ],
     },
     changePassword: {
       name: "change-password",
-      path: "/change-password",
+      path: "change-password",
+      fullPath: "/change-password",
       component: ChangePassword,
+      roles: [
+        Roles.admin,
+        Roles.humanResources,
+        Roles.officeManager,
+        Roles.projectManager,
+      ],
     },
   },
   privateRoutes: {
@@ -42,43 +72,69 @@ export default {
       name: "users",
       path: "/users",
       fullPath: "/app/users",
-      roles: ["admin", "pr", "dado"],
       component: Users,
+      roles: [
+        Roles.admin,
+        Roles.humanResources,
+        Roles.officeManager,
+        Roles.projectManager,
+      ],
     },
     addUser: {
       name: "add-user",
       path: "/add_user",
       fullPath: "/app/add_user",
       component: AddUser,
+      roles: [Roles.admin, Roles.officeManager],
     },
     userDetails: {
       name: "user-details",
       path: "/users/:id",
       component: UserDetails,
+      roles: [
+        Roles.admin,
+        Roles.humanResources,
+        Roles.officeManager,
+        Roles.projectManager,
+      ],
     },
     myProfile: {
       name: "my-profile",
       path: "/my_profile",
       fullPath: "/app/my_profile",
       component: MyProfile,
+      roles: [
+        Roles.admin,
+        Roles.humanResources,
+        Roles.officeManager,
+        Roles.projectManager,
+      ],
     },
     projects: {
       name: "projects",
       path: "/projects",
       fullPath: "/app/projects",
       component: Projects,
+      roles: [Roles.admin, Roles.officeManager, Roles.projectManager],
     },
     resources: {
       name: "resources",
       path: "/resources",
       fullPath: "/app/resources",
       component: Resources,
+      roles: [Roles.admin, Roles.officeManager],
     },
     dashboard: {
       name: "dashboard",
       path: "/dashboard",
       fullPath: "/app/dashboard",
       component: Dashboard,
+      roles: [
+        Roles.admin,
+        Roles.humanResources,
+        Roles.officeManager,
+        Roles.projectManager,
+      ],
     },
   },
 };

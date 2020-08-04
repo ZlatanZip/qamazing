@@ -16,7 +16,7 @@ const Routes = () => {
         path='/'
         render={({match: {url}}) => (
           <>
-            <PublicWrapper url={url}>
+            <PublicWrapper>
               <Switch>
                 {RouteHelpers.routeRenderer(routeConstants.publicRoutes, url)}
               </Switch>
@@ -25,7 +25,7 @@ const Routes = () => {
               path='/app'
               render={({match: {url}}) => (
                 <>
-                  <PrivateWrapper url={url}>
+                  <PrivateWrapper>
                     <Switch>
                       {RouteHelpers.routeRenderer(
                         routeConstants.privateRoutes,

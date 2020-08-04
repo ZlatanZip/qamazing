@@ -3,31 +3,13 @@ import {connect} from "react-redux";
 
 import LoginForm from "./login-form";
 import "../styles/style.css";
+
+import {login} from "../actions/login-action";
 import GoogleLogin from "react-google-login";
 
 class Login extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      email: "",
-      password: "",
-      loginErrors: "",
-    };
-  }
-
-  handleChange = (event) => {
-    this.setState({
-      [event.target.name]: event.target.value,
-    });
-  };
-
-  handleLogin = async (e) => {
-    e.preventDefault();
-  };
-
-  handleSubmit = () => {
-    const {email, password} = this.state;
+  handleSubmit = (values) => {
+    login(values);
   };
 
   render() {
@@ -35,11 +17,9 @@ class Login extends Component {
 
     return (
       <div className='form_center'>
-        {/*  {data} */}
-        <LoginForm>
+        <LoginForm onSubmit={this.handleSubmit}>
           <GoogleLogin googleRespose={this.googleResponse} />
         </LoginForm>
-        {/*   <h1>{logins && logins.map((moppie) => <h4>{moppie.name}</h4>)}</h1> */}
       </div>
     );
   }

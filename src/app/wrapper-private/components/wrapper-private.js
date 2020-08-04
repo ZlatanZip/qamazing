@@ -71,10 +71,8 @@ class WrapperPrivate extends Component {
     return this.forceUpdate();
   };
   render() {
-    const {children, loader, url} = this.props;
+    const {children, loader} = this.props;
     const {sideMenuOpen, dropDownOpen} = this.state;
-
-    let urls = window.location.href;
 
     let backgroundOpacity;
     if (sideMenuOpen) {

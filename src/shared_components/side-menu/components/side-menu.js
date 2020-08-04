@@ -14,7 +14,7 @@ const SideMenu = (props) => {
       <ul>
         {sideMenuLinks.map(({linkText, fullPath}) => {
           return (
-            <li onClick={sideMenuToggle}>
+            <li key={linkText} onClick={sideMenuToggle}>
               <div
                 onClick={() => RouteHelpers.goToRoute(fullPath)}
                 className='link'

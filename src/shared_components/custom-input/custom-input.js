@@ -1,36 +1,21 @@
-import React, { useReducer } from "react";
+import React, {useReducer} from "react";
 
 import "./style.css";
 
-const INPUT_CHANGE = "INPUT_CHANGE";
-const INPUT_BLUR = "INPUT_BLUR";
-
-const inputReducer = (state, action) => {
-  switch (action.type) {
-    case INPUT_CHANGE:
-      return {
-        ...state,
-        value: action.value,
-        isValid: action.isValid,
-      };
-    case INPUT_BLUR:
-      return {
-        ...state,
-        touched: true,
-      };
-  }
-};
-
 const CustomInput = (props) => {
-  const { id, onInputChange, email, errorText, required, min, max } = props;
-
-  const [inputState, dispatch] = useReducer(inputReducer, {
-    value: "",
-    isValid: false,
-    touched: false,
-  });
-
-  const textChangeHandler = (text) => {
+  const {
+    input,
+    label,
+    placeholder,
+    errorText,
+    id,
+    type,
+    max,
+    min,
+    meta,
+  } = props;
+  console.log(props);
+  /*  const textChangeHandler = (text) => {
     const regex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     let isValid = true;
 
@@ -47,16 +32,16 @@ const CustomInput = (props) => {
       isValid = false;
     }
   };
-
-  const lostFocusHandler = () => {};
-
+ */
   return (
-    <div className="input_wrapper">
-      {props.label && (
-        <label className="input_field_label">{props.label}</label>
-      )}
-      <input {...props} className="input_field" onChange={textChangeHandler} />
-      <small className="input_field_errorText">{errorText}</small>
+    <div className='input_wrapper'>
+      {label && <label className='input_field_label'>{label}</label>}
+      <div>
+        <input className='input_field' {...input} placeholder={placeholder} />
+        {meta.touched && meta.error && (
+          <small className='input_field_errorText'>{errorText}</small>
+        )}
+      </div>
     </div>
   );
 };

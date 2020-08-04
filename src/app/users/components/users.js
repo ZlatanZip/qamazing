@@ -29,6 +29,7 @@ class Users extends Component {
             <h1 className='user_screen_title'>{UserConstants.userPageTitle}</h1>
             <div>
               <RiUserAddLine
+                className='add_user_logo'
                 size={36}
                 color='white'
                 onClick={() =>

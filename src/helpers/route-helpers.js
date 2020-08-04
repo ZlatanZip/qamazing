@@ -25,10 +25,9 @@ class RouteHelpers extends Component {
         }
 
         {
-          /*  if (roles && roles.includes(userInfo.role) === -1) {
-          return <Redirect to={{pathname: "/"}} />;
-        }
- */
+          if (roles && roles.includes(userInfo.role) === -1) {
+            return <Redirect to={{pathname: "/"}} />;
+          }
         }
         return (
           <Route key={key} path={`${url}${path}`} component={component} exact />
