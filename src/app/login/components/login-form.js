@@ -65,7 +65,9 @@ const LoginForm = (props) => {
       <CustomButton
         buttonText='Simulated Login'
         click={() =>
-          RouteHelpers.goToRoute(routeConstants.privateRoutes.dashboard)
+          RouteHelpers.goToRoute(
+            routeConstants.privateRoutes.dashboard.fullPath
+          )
         }
       />
       <div style={{borderRadius: "25px", overflow: "hidden"}}>
