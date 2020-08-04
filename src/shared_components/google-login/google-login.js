@@ -1,7 +1,10 @@
 import React from "react";
 import GoogleLogin from "react-google-login";
 
-const LoginGoogle = ({googleRespose}) => {
+import RouteHelpers from "../../helpers/route-helpers";
+import routeConstants from "../../base/router/routes-constants";
+
+const LoginGoogle = ({login}) => {
   const googleRespose = (res) => {
     const tokenId = res.tokenObj.id_token;
     if (tokenId) {
