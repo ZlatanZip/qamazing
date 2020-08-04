@@ -14,6 +14,7 @@ const LoginGoogle = ({login}) => {
     }
   };
   return (
+    //just checking the ci/cd integration
     <GoogleLogin
       style={{background: "red"}}
       clientId='184114775759-9ovjrh0n1rcflc8f75q4gv2o0d9a8ms7.apps.googleusercontent.com'
