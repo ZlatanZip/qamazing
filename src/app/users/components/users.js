@@ -12,7 +12,7 @@ import RouteHelpers from "../../../helpers/route-helpers";
 
 import routeConstants from "../../../base/router/routes-constants";
 
-import {getUsers, searchAndSortUsers} from "../../users/actions/user-actions";
+import {getUsers, searchAndSortUsers} from "../actions/user-actions";
 
 import "../styles/style.css";
 
@@ -25,11 +25,13 @@ class Users extends Component {
       SearchText: "",
     },
   };
+
   componentDidMount() {
     const {getUsers} = this.props;
     const {sortBy} = this.state;
     getUsers(sortBy);
   }
+
   render() {
     const {users, loader} = this.props;
     console.log(users);

@@ -9,7 +9,7 @@ import "../styles/style.css";
 
 const myTable = (props) => {
   const {tableData} = props;
-  console.log(tableData);
+
   const tableHeaderText = () => {
     const item =
       tableData &&
@@ -41,7 +41,7 @@ const myTable = (props) => {
           key={index}
           onClick={() =>
             RouteHelpers.goToRoute(
-              `${tableConstants.tablePaths.userPath}${data.id}`
+              `${tableConstants.tablePaths.userPath}${data.ID}`
             )
           }
         >

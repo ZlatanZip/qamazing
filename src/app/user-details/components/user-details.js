@@ -1,68 +1,74 @@
-import React from "react";
+import React, {Component} from "react";
+import {connect} from "react-redux";
 import {reduxForm, Field} from "redux-form";
 
 import CustomButton from "../../../shared_components/custom-button/custom-button";
 import CustomInput from "../../../shared_components/custom-input/custom-input";
 import formConstants from "../constants/form-constants";
 
+import {getUserDetails} from "../actions/user-details-actions";
+
 import "../styles/style.css";
 
-const required = (v) => {
-  if (!v || v === "") {
-    return "This field is required";
+class UserDetails extends Component {
+  componentDidMount() {
+    const userId = this.props.match.params.id;
+    const {getUserDetails} = this.props;
+
+    getUserDetails(userId);
   }
-  return undefined;
+
+  showDetails = (details) => {
+    return Object.entries(details).map(([key, value]) => {
+      return (
+        <div
+          style={{
+            backgroundColor: "white",
+            textAlign: "center",
+            maxWidth: "400px",
+            height: "24px",
+            margin: "0 auto",
+            padding: "0",
+          }}
+        >
+          <h4 style={{margin: "3px"}}> {key + ":" + value}</h4>
+        </div>
+      );
+    });
+  };
+
+  handleSubmit() {
+    console.log("hello");
+  }
+  render() {
+    return (
+      <form onSubmit={this.handleSubmit} className='form_fields'>
+        <h1 className='form_title'>{formConstants.formTitle}</h1>
+        {this.props.userDetails && this.showDetails(this.props.userDetails)}
+        <CustomButton
+          buttonText={formConstants.buttonText.saveButton}
+          buttonType='submit'
+          // disabled={!valid}
+        />
+        <CustomButton
+          buttonText={formConstants.buttonText.cancleButton}
+          buttonType='submit'
+          // disabled={!valid}
+        />
+      </form>
+    );
+  }
+}
+
+const mapStateToProps = function (state) {
+  return {
+    loader: state.loader.loader,
+    userDetails: state.userDetails.userDetails,
+  };
 };
 
-const LoginForm = (props) => {
-  const {handleSubmit, valid} = props;
-
-  return (
-    <form onSubmit={handleSubmit} className='form_fields'>
-      <h1 className='form_title'>{formConstants.formTitle}</h1>
-      <Field
-        name={formConstants.formFields.fullName}
-        component={CustomInput}
-        label={formConstants.formLabels.fullNameLabel}
-        placeholder={formConstants.placeholders.fullNamePlaceholder}
-        errorText={formConstants.errorTexts.fullNameErrorText}
-      />
-      <Field
-        name={formConstants.formFields.email}
-        label={formConstants.formLabels.emailLabel}
-        component={CustomInput}
-        placeholder={formConstants.placeholders.emailPlaceholder}
-        errorText={formConstants.errorTexts.emailErrorText}
-      />
-      <Field
-        name={formConstants.formFields.newPassword}
-        label={formConstants.formLabels.newPasswordLabel}
-        component={CustomInput}
-        placeholder={formConstants.placeholders.newPasswordPlaceholder}
-        errorText={formConstants.errorTexts.newPasswordErrorText}
-      />
-      <Field
-        name={formConstants.formFields.repeatPassword}
-        label={formConstants.formLabels.repeatPasswordLabel}
-        component={CustomInput}
-        placeholder={formConstants.placeholders.repeatPasswordPlaceholder}
-        errorText={formConstants.errorTexts.repeatPasswordErrorText}
-      />
-
-      <CustomButton
-        buttonText={formConstants.buttonText.saveButton}
-        buttonType='submit'
-        disabled={!valid}
-      />
-      <CustomButton
-        buttonText={formConstants.buttonText.cancleButton}
-        buttonType='submit'
-        disabled={!valid}
-      />
-    </form>
-  );
+const mapDispatchToProps = {
+  getUserDetails,
 };
 
-export default reduxForm({
-  form: "Register",
-})(LoginForm);
+export default connect(mapStateToProps, mapDispatchToProps)(UserDetails);
