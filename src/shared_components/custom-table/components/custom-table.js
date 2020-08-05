@@ -9,11 +9,13 @@ import "../styles/style.css";
 
 const myTable = (props) => {
   const {tableData} = props;
-
+  console.log(tableData);
   const tableHeaderText = () => {
     const item =
       tableData &&
       tableData.map((data) => {
+        //last keys naming is strange probably a userPhotoUrl
+        delete data.UserProfileURL;
         return Object.keys(data);
       });
 

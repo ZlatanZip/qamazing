@@ -15,7 +15,8 @@ export default class APIHitConfig {
     const bearer_token = LocalStorageHelper.getAccessToken();
     const authorization = APIHitConfig.setAuthorizationHeader(bearer_token);
     request.headers = authorization;
-
+    request.payload = JSON.stringify(request.payload);
+    console.log(request);
     showLoaderBoolean && LocalStorageHelper.showLoader();
 
     return axios(request)
@@ -32,14 +33,14 @@ export default class APIHitConfig {
   };
 
   static get = (url, loaderBoolean) =>
-    APIHitConfig.ApiRequest({ method: "get", url }, loaderBoolean);
+    APIHitConfig.ApiRequest({method: "get", url}, loaderBoolean);
 
-  static post = (url, payload, loaderBoolean) =>
-    APIHitConfig.ApiRequest({ method: "post", url, payload }, loaderBoolean);
+  static post = (url, data, loaderBoolean) =>
+    APIHitConfig.ApiRequest({method: "post", url, data}, loaderBoolean);
 
   static delete = (url, loaderBoolean) =>
-    APIHitConfig.ApiRequest({ method: "delete", url }, loaderBoolean);
+    APIHitConfig.ApiRequest({method: "delete", url}, loaderBoolean);
 
-  static put = (url, payload, loaderBoolean) =>
-    APIHitConfig.ApiRequest({ method: "put", url, payload }, loaderBoolean);
+  static put = (url, data, loaderBoolean) =>
+    APIHitConfig.ApiRequest({method: "put", url, data}, loaderBoolean);
 }

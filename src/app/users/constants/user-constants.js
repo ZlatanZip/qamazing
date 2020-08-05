@@ -4,6 +4,6 @@ export default {
     buttonText: "Find",
     placeholder: "  Search a moppie",
   },
-
+  loaderText: "...loading",
   loadUsersButtonText: "Load More",
 };

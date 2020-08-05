@@ -17,7 +17,9 @@ class Login extends Component {
 
     return (
       <div className='form_center'>
-        <LoginForm />
+        <LoginForm onSubmit={this.handleSubmit}>
+          <GoogleLogin googleRespose={this.googleResponse} />
+        </LoginForm>
       </div>
     );
   }

@@ -5,6 +5,7 @@ import {RiUserAddLine} from "react-icons/ri";
 import CustomSearch from "../../../shared_components/custom-search/custom-search";
 import Table from "../../../shared_components/custom-table/components/custom-table";
 import CustomButton from "../../../shared_components/custom-button/custom-button";
+import Loader from "../../../shared_components/loader/component/loader";
 
 import UserConstants from "../constants/user-constants";
 import RouteHelpers from "../../../helpers/route-helpers";
@@ -16,12 +17,22 @@ import {getUsers, searchAndSortUsers} from "../../users/actions/user-actions";
 import "../styles/style.css";
 
 class Users extends Component {
+  state = {
+    sortBy: {
+      SortByColumn: "Firstname",
+      SortDirection: "ASC",
+      LastSeen: 0,
+      SearchText: "",
+    },
+  };
   componentDidMount() {
     const {getUsers} = this.props;
-    getUsers();
+    const {sortBy} = this.state;
+    getUsers(sortBy);
   }
   render() {
     const {users, loader} = this.props;
+    console.log(users);
     return (
       <div className='users_screen '>
         <div className='user_screen_header'>
@@ -49,7 +60,11 @@ class Users extends Component {
           />
         </div>
 
-        <Table tableData={users} />
+        {loader ? (
+          <Loader text={UserConstants.loaderText} />
+        ) : (
+          <Table tableData={users} />
+        )}
         <div>
           <CustomButton buttonText={UserConstants.loadUsersButtonText} />
         </div>

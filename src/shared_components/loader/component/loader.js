@@ -4,9 +4,11 @@ import "../style/style.css";
 const Loader = (props) => {
   const {text} = props;
   return (
-    <div className='loader'>
-      <h1 className='loader_title'>MOP</h1>
-      <h2 className='loader_text'>{text}</h2>
+    <div className='loader_wrapper'>
+      <div className='loader'>
+        <h1 className='loader_title'>MOP</h1>
+        <h2 className='loader_text'>{text}</h2>
+      </div>
     </div>
   );
 };

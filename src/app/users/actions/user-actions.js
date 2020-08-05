@@ -7,11 +7,12 @@ import {
   setAndSearchSortUsersActionCreator,
 } from "./user-action-creators";
 
-export const getUsers = (message) => {
+export const getUsers = (data) => {
   return async (dispatch) => {
     try {
-      const userData = await handleGetUsers(message);
-      let action = getUsersActionCreator(userData.data);
+      const userData = await handleGetUsers(data);
+      console.log(userData);
+      let action = getUsersActionCreator(userData);
       dispatch(action);
     } catch (err) {}
   };
