@@ -1,5 +1,5 @@
 export default {
-  formTitle: "Login",
+  formTitle: "Profile",
   formLabels: {
     emailLabel: "E-MAIL",
     passwordLabel: "PASSWORD",

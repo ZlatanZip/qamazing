@@ -25,7 +25,7 @@ const Dropdown = (props) => {
       </div>
       <div className='dropdown_actions_wrapper'>
         {history.location.pathname ===
-        routeConstants.privateRoutes.myProfile.fullPath ? (
+        routeConstants.privateRoutes.userProfile.fullPath ? (
           <li onClick={dropDownToggle}>
             <div
               onClick={() =>
@@ -42,7 +42,7 @@ const Dropdown = (props) => {
             <div
               onClick={() =>
                 RouteHelpers.goToRoute(
-                  routeConstants.privateRoutes.myProfile.fullPath
+                  routeConstants.privateRoutes.userProfile.fullPath
                 )
               }
             >

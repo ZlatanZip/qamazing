@@ -4,6 +4,11 @@ const initialState = {
   userDetails: {},
 };
 
+const applyNewState = (state, action) => ({
+  ...state,
+  authToken: "",
+});
+
 const userDetailsReducer = (state = initialState, action) => {
   console.log(action.payload);
   switch (action.type) {
