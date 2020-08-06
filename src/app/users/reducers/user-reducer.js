@@ -1,4 +1,4 @@
-import GET_USERS_ACTION_TYPE from "../constants/action-types";
+import userActionTypes from "../constants/action-types";
 
 const initialState = {
   users: [],
@@ -6,7 +6,7 @@ const initialState = {
 
 const userReducer = (state = initialState, action) => {
   switch (action.type) {
-    case GET_USERS_ACTION_TYPE:
+    case userActionTypes.GET_USERS_ACTION_TYPE:
       return {
         ...state,
         users: action.payload,

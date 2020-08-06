@@ -9,6 +9,7 @@
   font-weight: 700;
   letter-spacing: 0.1rem;
   margin: 1em;
+  z-index: 200;
 }
 
 .custom_button:hover {

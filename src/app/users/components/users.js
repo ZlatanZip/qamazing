@@ -1,6 +1,6 @@
-import React, {Component} from "react";
-import {connect} from "react-redux";
-import {RiUserAddLine} from "react-icons/ri";
+import React, { Component } from "react";
+import { connect } from "react-redux";
+import { RiUserAddLine } from "react-icons/ri";
 
 import CustomSearch from "../../../shared_components/custom-search/custom-search";
 import Table from "../../../shared_components/custom-table/components/custom-table";
@@ -12,7 +12,11 @@ import RouteHelpers from "../../../helpers/route-helpers";
 
 import routeConstants from "../../../base/router/routes-constants";
 
-import {getUsers, searchAndSortUsers} from "../actions/user-actions";
+import {
+  getUsers,
+  searchAndSortUsers,
+  activateDeactivateUser,
+} from "../actions/user-actions";
 
 import "../styles/style.css";
 
@@ -24,27 +28,37 @@ class Users extends Component {
       LastSeen: 0,
       SearchText: "",
     },
+    userStatus: {},
   };
 
   componentDidMount() {
-    const {getUsers} = this.props;
-    const {sortBy} = this.state;
+    const { getUsers } = this.props;
+    const { sortBy } = this.state;
     getUsers(sortBy);
   }
 
+  setActivateDeactivateUser = (userId, status) => {
+    const { activateDeactivateUser } = this.props;
+    const userStatus = {
+      UserID: userId,
+      ActiveStatus: !status,
+    };
+    activateDeactivateUser(userStatus);
+  };
+
   render() {
-    const {users, loader} = this.props;
+    const { users, loader } = this.props;
     console.log(users);
     return (
-      <div className='users_screen '>
-        <div className='user_screen_header'>
+      <div className="users_screen ">
+        <div className="user_screen_header">
           <div>
-            <h1 className='user_screen_title'>{UserConstants.userPageTitle}</h1>
+            <h1 className="user_screen_title">{UserConstants.userPageTitle}</h1>
             <div>
               <RiUserAddLine
-                className='add_user_logo'
+                className="add_user_logo"
                 size={36}
-                color='white'
+                color="white"
                 onClick={() =>
                   RouteHelpers.goToRoute(
                     routeConstants.privateRoutes.addUser.fullPath
@@ -65,7 +79,10 @@ class Users extends Component {
         {loader ? (
           <Loader text={UserConstants.loaderText} />
         ) : (
-          <Table tableData={users} />
+          <Table
+            tableData={users}
+            toggleStatus={this.setActivateDeactivateUser}
+          />
         )}
         <div>
           <CustomButton buttonText={UserConstants.loadUsersButtonText} />
@@ -85,6 +102,7 @@ const mapStateToProps = function (state) {
 const mapDispatchToProps = {
   getUsers,
   searchAndSortUsers,
+  activateDeactivateUser,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Users);

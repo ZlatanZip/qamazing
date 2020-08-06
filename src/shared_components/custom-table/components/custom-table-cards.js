@@ -1,9 +1,9 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 
 import "../styles/custom-table-cards-style.css";
 
 const TableCards = (props) => {
-  const {data} = props;
+  const { data } = props;
   const [showDetails, setShowDetails] = useState(false);
   const role = true;
   const tableCardClasses = showDetails
@@ -15,20 +15,20 @@ const TableCards = (props) => {
 
   return (
     <div
-      className='table_card_wrapper'
+      className="table_card_wrapper"
       onClick={() => {
         setShowDetails((prevState) => !prevState);
       }}
     >
-      <div className='table_card_header'>
+      <div className="table_card_header">
         <h4> {data.name + " " + data.lastName}</h4>
         <h4>{data.job}</h4>
       </div>
 
       <div className={tableCardClasses}>
-        <div className='table_card_content_left'>
+        <div className="table_card_content_left">
           {titles.slice(1).map((title, index) => {
-            return <h4 style={{color: "black"}}>{title}</h4>;
+            return <h4 style={{ color: "black" }}>{title}</h4>;
           })}
         </div>
         <div>
@@ -42,7 +42,7 @@ const TableCards = (props) => {
 
             return (
               <div>
-                <h4 style={{color: "black"}}>{value}</h4>
+                <h4 style={{ color: "black" }}>{value}</h4>
               </div>
             );
           })}
