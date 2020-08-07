@@ -14,25 +14,7 @@ const CustomInput = (props) => {
     min,
     meta,
   } = props;
-  console.log(props);
-  /*  const textChangeHandler = (text) => {
-    const regex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-    let isValid = true;
 
-    if (required && text.trim().length === 0) {
-      isValid = false;
-    }
-    if (email && !regex.test(text.toLowerCase())) {
-      isValid = false;
-    }
-    if (min != null && text.length < min) {
-      isValid = false;
-    }
-    if (max != null && text.length > max) {
-      isValid = false;
-    }
-  };
- */
   return (
     <div className='input_wrapper'>
       {label && <label className='input_field_label'>{label}</label>}

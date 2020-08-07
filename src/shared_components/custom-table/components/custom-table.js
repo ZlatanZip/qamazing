@@ -9,7 +9,7 @@ import RouteHelpers from "../../../helpers/route-helpers";
 import "../styles/style.css";
 
 const myTable = (props) => {
-  const { tableData, toggleStatus } = props;
+  const {tableData, toggleStatus} = props;
 
   const tableHeaderText = () => {
     const item =
@@ -23,19 +23,19 @@ const myTable = (props) => {
     return item[0];
   };
 
-  const RenderTableHeader = ({ data }) => {
+  const RenderTableHeader = ({data}) => {
     return (
       <tr>
         {data &&
           data.map((title, index) => {
             return <th key={index}>{title.toUpperCase().replace("_", " ")}</th>;
           })}
-        <th>User Actions</th>
+        <th>{tableConstants.tableHeader.userActions}</th>
       </tr>
     );
   };
 
-  const RenderTableData = ({ data }) => {
+  const RenderTableData = ({data}) => {
     const keys = Object.keys(data);
     return keys.map((key, index) => {
       return (
@@ -56,7 +56,7 @@ const myTable = (props) => {
   const RenderTableRow = (data) => {
     return data.slice(0, 9).map((dataItem, index) => {
       return (
-        <tr className="table_row" key={index}>
+        <tr className='table_row' key={index}>
           <RenderTableData key={index} data={dataItem} />
           <td>
             <CustomButton
@@ -73,7 +73,7 @@ const myTable = (props) => {
   };
 
   return window.innerWidth > 768 ? (
-    <table className="table_wrapper">
+    <table className='table_wrapper'>
       <thead>
         <RenderTableHeader data={tableHeaderText()} />
       </thead>

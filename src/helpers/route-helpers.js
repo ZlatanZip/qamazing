@@ -7,7 +7,11 @@ import LocalStorageHelper from "../helpers/local-storage-helper";
 class RouteHelpers extends Component {
   static goToRoute = (path, param) => {
     const query = param ? param : "";
-    myHistory.push({pathname: `${path}`, search: `${query}`}, {});
+    if (path === "back") {
+      myHistory.goBack();
+    } else {
+      myHistory.push({pathname: `${path}`, search: `${query}`}, {});
+    }
   };
 
   static authorizedRoutesRenderer = (

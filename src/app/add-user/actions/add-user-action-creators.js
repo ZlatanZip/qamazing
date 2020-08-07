@@ -1,8 +1,15 @@
-import { LOGIN_ACTION_TYPE } from "../constants/action-types";
+import addUserActionTypes from "../constants/action-types";
 
-export const loginActionCreator = (data) => {
+export const userInviteActionCreator = (data) => {
   return {
-    type: LOGIN_ACTION_TYPE,
+    type: addUserActionTypes.INVITE_USER_ACTION_TYPE,
+    data,
+  };
+};
+
+export const addUserActionCreator = (data) => {
+  return {
+    type: addUserActionTypes.ADD_USER_ACTION_TYPE,
     data,
   };
 };

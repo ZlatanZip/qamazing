@@ -1,11 +1,27 @@
-import {login as handleLogin} from "../../../apiHit/login/actions";
-import {loginActionCreator} from "./login-action-creators";
+import {
+  addUser as handleAddUser,
+  inviteUser as handleInviteUser,
+} from "../../../apiHit/add-user/actions";
+import {
+  addUserActionCreator,
+  userInviteActionCreator,
+} from "./add-user-action-creators";
 
-export const login = (googleToken) => {
+export const inviteUsers = (data) => {
   return async (dispatch) => {
     try {
-      const apiToken = await handleLogin(googleToken);
-      let action = loginActionCreator(apiToken);
+      const userInviteData = await handleInviteUser(data);
+      let action = userInviteActionCreator(userInviteData);
+      dispatch(action);
+    } catch (err) {}
+  };
+};
+
+export const addUser = (data) => {
+  return async (dispatch) => {
+    try {
+      const apiToken = await handleAddUser(data);
+      let action = addUserActionCreator(apiToken);
       dispatch(action);
     } catch (err) {}
   };
