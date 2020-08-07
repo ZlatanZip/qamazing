@@ -5,5 +5,8 @@ export default {
     placeholder: "  Search a moppie",
   },
   loaderText: "...loading",
-  loadUsersButtonText: "Load More",
+  loadUsersButtonText: {
+    loadMore: "Load More",
+    showLess: "Show Less",
+  },
 };

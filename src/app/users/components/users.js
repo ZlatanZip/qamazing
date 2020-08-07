@@ -28,14 +28,33 @@ class Users extends Component {
       LastSeen: 0,
       SearchText: "",
     },
-    userStatus: {},
   };
 
   componentDidMount() {
-    const { getUsers } = this.props;
-    const { sortBy } = this.state;
-    getUsers(sortBy);
+    const { getUsers, users } = this.props;
+    this.loadUsers();
   }
+
+  loadUsers = () => {
+    const { getUsers, users } = this.props;
+    getUsers(this.state.sortBy);
+  };
+
+  onLoadMoreOrLess = (loadingParam) => {
+    console.log(this.state.sortBy);
+    const { LastSeen } = this.state.sortBy;
+    const numOfContentToShow =
+      loadingParam === "more" ? 2 : LastSeen === 0 ? 0 : -2;
+    this.setState((state) => {
+      return {
+        ...state,
+        sortBy: {
+          ...this.state.sortBy,
+          LastSeen: LastSeen + numOfContentToShow,
+        },
+      };
+    }, this.loadUsers());
+  };
 
   setActivateDeactivateUser = (userId, status) => {
     const { activateDeactivateUser } = this.props;
@@ -48,7 +67,8 @@ class Users extends Component {
 
   render() {
     const { users, loader } = this.props;
-    console.log(users);
+    console.log(this.state.sortBy);
+
     return (
       <div className="users_screen ">
         <div className="user_screen_header">
@@ -85,7 +105,14 @@ class Users extends Component {
           />
         )}
         <div>
-          <CustomButton buttonText={UserConstants.loadUsersButtonText} />
+          <CustomButton
+            buttonText={UserConstants.loadUsersButtonText.loadMore}
+            click={() => this.onLoadMoreOrLess("more")}
+          />
+          <CustomButton
+            buttonText={UserConstants.loadUsersButtonText.showLess}
+            click={this.onLoadMoreOrLess}
+          />
         </div>
       </div>
     );

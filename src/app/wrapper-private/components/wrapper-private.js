@@ -1,5 +1,5 @@
-import React, {Component} from "react";
-import {Route} from "react-router-dom";
+import React, { Component } from "react";
+import { Route } from "react-router-dom";
 
 import Loader from "../../../shared_components/loader/component/loader";
 import SideMenu from "../../../shared_components/side-menu/components/side-menu";
@@ -15,7 +15,7 @@ import routeConstants from "../../../base/router/routes-constants";
 import "../styles/style.css";
 
 const PrivateRoutes = (props) => {
-  const {children} = props;
+  const { children } = props;
   const token = LocalStorageHelper.getAccessToken();
   return (
     <Route
@@ -37,11 +37,11 @@ class WrapperPrivate extends Component {
   };
 
   closeMenuWhenNotUsedHandler = () => {
-    if (!this.state.sideMenuOpen) this.setState({sideMenuOpen: false});
+    if (!this.state.sideMenuOpen) this.setState({ sideMenuOpen: false });
   };
 
   closeDropDownWhenNotUsedHandler = () => {
-    if (!this.state.dropDownOpen) this.setState({dropDownOpen: false});
+    if (!this.state.dropDownOpen) this.setState({ dropDownOpen: false });
   };
 
   sideMenuToggleHandler = () => {
@@ -65,14 +65,12 @@ class WrapperPrivate extends Component {
   };
 
   backgroundOpacityToggleHandler = () => {
-    this.setState({sideMenuOpen: false});
+    this.setState({ sideMenuOpen: false });
   };
-  as = () => {
-    return this.forceUpdate();
-  };
+
   render() {
-    const {children, loader} = this.props;
-    const {sideMenuOpen, dropDownOpen} = this.state;
+    const { children, loader } = this.props;
+    const { sideMenuOpen, dropDownOpen } = this.state;
 
     let backgroundOpacity;
     if (sideMenuOpen) {
@@ -82,7 +80,7 @@ class WrapperPrivate extends Component {
     }
 
     return (
-      <div className='wrapper_private wrapper_background'>
+      <div className="wrapper_private wrapper_background">
         <CustomNav
           sideMenuToggle={this.sideMenuToggleHandler}
           dropDownToggle={this.dropDownToggleHandler}
@@ -94,13 +92,13 @@ class WrapperPrivate extends Component {
         {backgroundOpacity}
         <CustomDropDown
           show={dropDownOpen}
-          name='Zlatan Salihagic'
-          email='zlatan.salihagic@mop.ba'
+          name="Zlatan Salihagic"
+          email="zlatan.salihagic@mop.ba"
           dropDownToggle={this.dropDownToggleHandler}
         />
-        <div className='wrapper_private_content'>
+        <div className="wrapper_private_content">
           {children}
-          {loader && <Loader text='users' />}
+          {loader && <Loader text="users" />}
         </div>
       </div>
     );
