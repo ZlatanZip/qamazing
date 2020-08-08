@@ -1,7 +1,5 @@
-import React, {useState} from "react";
-import {useDispatch} from "react-redux";
+import React from "react";
 import {reduxForm, Field} from "redux-form";
-import GoogleLogin from "react-google-login";
 
 import Logo from "../../../shared_components/logo/components/logo";
 import CustomButton from "../../../shared_components/custom-button/custom-button";
@@ -14,21 +12,17 @@ import formConstants from "../constants/form-constants";
 import LoginGoogle from "../../../shared_components/google-login/google-login";
 import {login} from "../actions/login-action";
 
+import validate from "../validation/login-validation";
+
 import "../styles/style.css";
 
-const required = (v) => {
-  if (!v || v === "") {
-    return "This field is required";
-  }
-  return undefined;
-};
-
 const LoginForm = (props) => {
-  const {handleSubmit} = props;
+  const {handleSubmit, pristine, reset, submitting} = props;
 
   const dispatch = useDispatch();
 
   const loginHandler = async (data) => {
+    console.log(data);
     await dispatch(login(data));
   };
 
@@ -40,28 +34,37 @@ const LoginForm = (props) => {
       <h1 className='form_title'>{formConstants.formTitle}</h1>
 
       <Field
-        id='email'
-        type='email'
+        type={formConstants.formFields.emailField}
         name={formConstants.formFields.emailField}
         component={CustomInput}
-        validate={required}
         label={formConstants.formLabels.emailLabel}
         placeholder={formConstants.placeholders.emailPlaceholder}
-        errorText={formConstants.errorTexts.emailErrorText}
+        max={8}
       />
       <Field
-        id='password'
-        type='password'
+        type={formConstants.formFields.passwordField}
         name={formConstants.formFields.passwordField}
         component={CustomInput}
-        validate={required}
         label={formConstants.formLabels.passwordLabel}
         placeholder={formConstants.placeholders.passwordPlaceholder}
-        errorText={formConstants.errorTexts.passwordErrorText}
       />
 
-      <CustomButton buttonText={formConstants.buttonText} buttonType='submit' />
-      <a className='form_anchor'>{formConstants.anchorText}</a>
+      <CustomButton
+        disabled={pristine || submitting}
+        buttonText={formConstants.button.text}
+        buttonType={formConstants.button.type}
+        reset={reset}
+      />
+      <div
+        onClick={() =>
+          RouteHelpers.goToRoute(
+            routeConstants.publicRoutes.forgotPassword.fullPath
+          )
+        }
+        className='form_anchor'
+      >
+        {formConstants.anchorText}
+      </div>
 
       <div style={{borderRadius: "25px", overflow: "hidden"}}>
         <LoginGoogle login={loginHandler} />
@@ -72,4 +75,5 @@ const LoginForm = (props) => {
 
 export default reduxForm({
   form: "Login",
+  validate,
 })(LoginForm);

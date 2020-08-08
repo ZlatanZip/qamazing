@@ -7,21 +7,23 @@ const CustomInput = (props) => {
     input,
     label,
     placeholder,
-    errorText,
-    id,
     type,
-    max,
-    min,
-    meta,
+    meta: {touched, error},
   } = props;
 
   return (
     <div className='input_wrapper'>
+      {console.log(input)}
       {label && <label className='input_field_label'>{label}</label>}
       <div>
-        <input className='input_field' {...input} placeholder={placeholder} />
-        {meta.touched && meta.error && (
-          <small className='input_field_errorText'>{errorText}</small>
+        <input
+          {...input}
+          className='input_field'
+          type={type}
+          placeholder={placeholder}
+        />
+        {touched && error && (
+          <small className='input_field_errorText'>{error}</small>
         )}
       </div>
     </div>

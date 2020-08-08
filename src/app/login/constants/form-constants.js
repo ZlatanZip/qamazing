@@ -16,6 +16,9 @@ export default {
     emailErrorText: "Email is required",
     passwordErrorText: "Password is required",
   },
-  buttonText: "Login",
+  button: {
+    text: "Login",
+    type: "submit",
+  },
   anchorText: "Forgot Password?",
 };

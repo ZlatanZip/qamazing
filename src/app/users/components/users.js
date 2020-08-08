@@ -1,6 +1,6 @@
-import React, { Component } from "react";
-import { connect } from "react-redux";
-import { RiUserAddLine } from "react-icons/ri";
+import React, {Component} from "react";
+import {connect} from "react-redux";
+import {RiUserAddLine} from "react-icons/ri";
 
 import CustomSearch from "../../../shared_components/custom-search/custom-search";
 import Table from "../../../shared_components/custom-table/components/custom-table";
@@ -31,18 +31,18 @@ class Users extends Component {
   };
 
   componentDidMount() {
-    const { getUsers, users } = this.props;
+    const {getUsers, users} = this.props;
     this.loadUsers();
   }
 
   loadUsers = () => {
-    const { getUsers, users } = this.props;
+    const {getUsers, users} = this.props;
     getUsers(this.state.sortBy);
   };
 
   onLoadMoreOrLess = (loadingParam) => {
-    console.log(this.state.sortBy);
-    const { LastSeen } = this.state.sortBy;
+    console.log(this.state.sortBy + " heloo");
+    const {LastSeen} = this.state.sortBy;
     const numOfContentToShow =
       loadingParam === "more" ? 2 : LastSeen === 0 ? 0 : -2;
     this.setState((state) => {
@@ -57,7 +57,7 @@ class Users extends Component {
   };
 
   setActivateDeactivateUser = (userId, status) => {
-    const { activateDeactivateUser } = this.props;
+    const {activateDeactivateUser} = this.props;
     const userStatus = {
       UserID: userId,
       ActiveStatus: !status,
@@ -66,19 +66,19 @@ class Users extends Component {
   };
 
   render() {
-    const { users, loader } = this.props;
+    const {users, loader} = this.props;
     console.log(this.state.sortBy);
 
     return (
-      <div className="users_screen ">
-        <div className="user_screen_header">
+      <div className='users_screen '>
+        <div className='user_screen_header'>
           <div>
-            <h1 className="user_screen_title">{UserConstants.userPageTitle}</h1>
+            <h1 className='user_screen_title'>{UserConstants.userPageTitle}</h1>
             <div>
               <RiUserAddLine
-                className="add_user_logo"
+                className='add_user_logo'
                 size={36}
-                color="white"
+                color='white'
                 onClick={() =>
                   RouteHelpers.goToRoute(
                     routeConstants.privateRoutes.addUser.fullPath
