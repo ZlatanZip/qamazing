@@ -6,18 +6,19 @@ export default {
   },
   formFields: {
     emailField: "email",
-    passwordField: "password",
+    roleField: "role",
   },
   placeholders: {
     emailPlaceholder: "Please enter users email address",
     rolePlaceholder: "Please enter users role",
   },
-  errorTexts: {
-    emailErrorText: "Email is required",
-    roleErrorText: "Role is required",
-  },
-  buttonText: {
-    inviteButtonText: "Invite User",
-    backToUsersButtonText: "Back To Users",
+  buttons: {
+    text: {
+      inviteButton: "Invite User",
+      backButton: "Back To Users",
+    },
+    type: {
+      inviteButtonType: "submit",
+    },
   },
 };

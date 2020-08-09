@@ -19,7 +19,7 @@ export default {
   publicRoutes: {
     login: {
       name: "login",
-      path: "/",
+      path: "/login",
       fullPath: "/",
       component: Login,
       roles: [

@@ -1,6 +1,5 @@
 import React, {Component} from "react";
 import {connect} from "react-redux";
-import {Field, reduxForm} from "redux-form";
 
 import AddUserForm from "./add-user-form";
 import CustomInput from "../../../shared_components/custom-input/custom-input";
@@ -12,13 +11,6 @@ import RouteHelpers from "../../../helpers/route-helpers";
 import {inviteUsers} from "../actions/add-user-action";
 
 import "../styles/style.css";
-
-const required = (v) => {
-  if (!v || v === "") {
-    return "This field is required";
-  }
-  return undefined;
-};
 
 class AddUser extends Component {
   inviteUser = (values) => {
@@ -34,17 +26,7 @@ class AddUser extends Component {
             </h1>
           </div>
         </div>
-        <AddUserForm handleSubmit={this.inviteUser}>
-          <CustomButton
-            buttonText={addUserConstants.buttonText.inviteButtonText}
-          />
-          <CustomButton
-            buttonText={addUserConstants.buttonText.backToUsersButtonText}
-            click={() => {
-              RouteHelpers.goToRoute("back");
-            }}
-          />
-        </AddUserForm>
+        <AddUserForm handleSubmit={this.inviteUser} />
       </div>
     );
   }

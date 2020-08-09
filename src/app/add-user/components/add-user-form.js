@@ -1,54 +1,49 @@
 import React, {useState} from "react";
-import {useDispatch} from "react-redux";
 import {reduxForm, Field} from "redux-form";
-import GoogleLogin from "react-google-login";
-
-import Logo from "../../../shared_components/logo/components/logo";
 
 import CustomInput from "../../../shared_components/custom-input/custom-input";
+import CustomButton from "../../../shared_components/custom-button/custom-button";
 
 import addUserConstants from "../constants/add-user-constants";
+import RouteHelpers from "../../../helpers/route-helpers";
 
-import LoginGoogle from "../../../shared_components/google-login/google-login";
+import validate from "../validation/add-user-validation";
 
 import "../styles/style.css";
 
-const required = (v) => {
-  if (!v || v === "") {
-    return "This field is required";
-  }
-  return undefined;
-};
-
 const AddUserForm = (props) => {
-  const {children, handleSubmit} = props;
+  const {handleSubmit, pristine, submitting} = props;
 
   return (
-    <form className='add_user_form' onSubmit={handleSubmit}>
+    <form className='add_user_form'>
       <div className='add_user_credentials'>
         <div className='name_and_lastname_wrapper'>
           <Field
-            id='email'
             type='email'
-            name={addUserConstants.formLabels.emailLabel}
+            name={addUserConstants.formFields.emailField}
             component={CustomInput}
-            validate={required}
             label={addUserConstants.formLabels.emailLabel}
             placeholder={addUserConstants.placeholders.emailPlaceholder}
-            errorText={addUserConstants.errorTexts.emailErrorText}
           />
           <Field
-            id='role'
             type='text'
-            name={addUserConstants.formLabels.roleLabel}
+            name={addUserConstants.formFields.roleField}
             component={CustomInput}
-            validate={required}
             label={addUserConstants.formLabels.roleLabel}
             placeholder={addUserConstants.placeholders.rolePlaceholder}
-            errorText={addUserConstants.errorTexts.roleErrorText}
           />
         </div>
-        {children}
+        <CustomButton
+          buttonType={addUserConstants.buttons.type.inviteButtonType}
+          disabled={pristine || submitting}
+          buttonText={addUserConstants.buttons.text.inviteButton}
+        />
+        <CustomButton
+          buttonText={addUserConstants.buttons.text.backButton}
+          click={() => {
+            RouteHelpers.goToRoute("back");
+          }}
+        />
         {/* <div className='phone_and_address_wrapper'>
             <Field
               name='phone'
@@ -150,4 +145,5 @@ const AddUserForm = (props) => {
 
 export default reduxForm({
   form: "AddUser",
+  validate,
 })(AddUserForm);
