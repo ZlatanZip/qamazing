@@ -14,7 +14,7 @@ class UserDetails extends Component {
   componentDidMount() {
     const userId = this.props.match.params.id;
     const {getUserDetails} = this.props;
-
+console.log('heloo')
     getUserDetails(userId);
   }
 

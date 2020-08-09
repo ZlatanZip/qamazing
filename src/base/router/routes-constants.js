@@ -90,6 +90,7 @@ export default {
     userDetails: {
       name: "user-details",
       path: "/users/:id",
+      fullPath: "/app/users/:id",
       component: UserDetails,
       roles: [
         Roles.admin,

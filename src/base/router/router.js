@@ -18,7 +18,9 @@ const Routes = () => {
           <>
             <PublicWrapper>
               <Switch>
-                {RouteHelpers.routeRenderer(routeConstants.publicRoutes, url)}
+                {RouteHelpers.authorizedRoutesRenderer(
+                  routeConstants.publicRoutes
+                )}
               </Switch>
             </PublicWrapper>
             <Route
@@ -27,9 +29,8 @@ const Routes = () => {
                 <>
                   <PrivateWrapper>
                     <Switch>
-                      {RouteHelpers.routeRenderer(
-                        routeConstants.privateRoutes,
-                        url
+                      {RouteHelpers.authorizedRoutesRenderer(
+                        routeConstants.privateRoutes
                       )}
                     </Switch>
                   </PrivateWrapper>

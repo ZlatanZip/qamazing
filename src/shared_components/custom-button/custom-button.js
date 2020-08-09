@@ -8,12 +8,7 @@ const CustomButton = (props) => {
     ? "custom_button_disabled"
     : "custom_button";
   return (
-    <button
-      onClick={reset}
-      className={customButtonClasses}
-      disabled={disabled}
-      type={buttonType}
-    >
+    <button onClick={click} className={customButtonClasses} type={buttonType}>
       {buttonText || children}
     </button>
   );
