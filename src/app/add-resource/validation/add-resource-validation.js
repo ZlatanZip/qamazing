@@ -15,6 +15,11 @@ const validate = (values) => {
       "Invalid role, roles are number  based and single digits 1 for 'admin' and 2 for 'user' ";
   }
 
+
+  if (!values.sex) {
+    errors.sex = "Choosing a gender is required ";
+  }
+
   return errors;
 };
 export default validate;

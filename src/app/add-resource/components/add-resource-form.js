@@ -4,6 +4,8 @@ import {reduxForm, Field} from "redux-form";
 import CustomInput from "../../../shared_components/custom-input/custom-input";
 import CustomButton from "../../../shared_components/custom-button/custom-button";
 
+import CustomSelect from "../../../shared_components/custom-select/custom-select";
+
 import addUserConstants from "../constants/add-resource-constants";
 import RouteHelpers from "../../../helpers/route-helpers";
 
@@ -15,7 +17,9 @@ const AddResourceForm = (props) => {
   const {handleSubmit, pristine, submitting} = props;
 
   return (
-    <form className='add_user_form'>
+
+    <form className='add_user_form' onSubmit={handleSubmit}>
+
       <div className='add_user_credentials'>
         <div className='name_and_lastname_wrapper'>
           <Field
@@ -31,8 +35,16 @@ const AddResourceForm = (props) => {
             component={CustomInput}
             label={addUserConstants.formLabels.roleLabel}
             placeholder={addUserConstants.placeholders.rolePlaceholder}
+
+          />
+          <Field
+            name='sex'
+            component={CustomSelect}
+            label='SEX'
+            data={["male", "female"]}
           />
         </div>
+
         <CustomButton
           buttonType={addUserConstants.buttons.type.inviteButtonType}
           disabled={pristine || submitting}

@@ -1,33 +1,43 @@
 import React from "react";
 import SelectList from "react-widgets/lib/SelectList";
 
+import "react-widgets/dist/css/react-widgets.css";
+
 import "./style.css";
 
-const CustomInput = (props) => {
+const CustomSelect = (props) => {
+  console.log(props);
+
   const {
     input,
     label,
     placeholder,
     type,
+    data,
     meta: {touched, error},
   } = props;
 
   return (
-    <div className='input_wrapper'>
-      {label && <label className='input_field_label'>{label}</label>}
+
+    <div className='select_field_wrapper'>
+      {label && <label className='select_field_label'>{label}</label>}
       <div>
         <SelectList
           {...input}
-          className='input_field'
+          style={{backgroundColor: "white"}}
           type={type}
           placeholder={placeholder}
+          data={data}
         />
         {touched && error && (
-          <small className='input_field_errorText'>{error}</small>
+          <small className='select_field_errorText'>{error}</small>
+
         )}
       </div>{" "}
     </div>
   );
 };
 
-export default CustomInput;
+
+export default CustomSelect;
+

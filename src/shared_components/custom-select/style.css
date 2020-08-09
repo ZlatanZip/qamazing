@@ -1,12 +1,13 @@
-.input_wrapper {
+
+.select_field_wrapper {
   padding-bottom: 25px;
+  width: 150px;
 }
 
-.input_field {
-  width: 85%;
-  min-width: 268px;
-  max-width: 600px;
-  background-color: white;
+.select_field {
+  width: 250px;
+
+
   height: 22px;
   border: none;
   border-radius: 5px;
@@ -19,12 +20,15 @@
   margin: 20px 10px 0 0;
 }
 
-.input_field:focus {
+.select_field:focus {
+
   font-weight: 500;
   color: black;
 }
 
-.input_field_errorText {
+
+.select_field_errorText {
+
   padding-top: 5px;
   display: block;
   color: rgb(251, 97, 76);
@@ -33,7 +37,9 @@
   margin: 0 auto;
 }
 
-.input_field_label {
+
+.select_field_label {
+
   display: block;
   text-transform: uppercase;
   font-size: 0.9em;
@@ -42,6 +48,8 @@
   padding-right: 15px;
 }
 
-.input_field::placeholder {
+
+.select_field::placeholder {
+
   padding-top: 5px;
 }
