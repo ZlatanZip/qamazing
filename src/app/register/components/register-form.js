@@ -3,68 +3,75 @@ import {reduxForm, Field} from "redux-form";
 
 import CustomButton from "../../../shared_components/custom-button/custom-button";
 import CustomInput from "../../../shared_components/custom-input/custom-input";
+
+import RouteHelpers from "../../../helpers/route-helpers";
+import routeConstants from "../../../base/router/routes-constants";
 import formConstants from "../constants/form-constants";
+
+import LoginGoogle from "../../../shared_components/google-login/google-login";
+
+import validate from "../validation/register-validation";
 
 import "../styles/style.css";
 
-const required = (v) => {
-  if (!v || v === "") {
-    return "This field is required";
-  }
-  return undefined;
-};
-
-const LoginForm = (props) => {
-  const {handleSubmit, valid} = props;
+const RegisterForm = (props) => {
+  const {handleSubmit, pristine, submitting} = props;
 
   return (
     <div className='form_center'>
       <form onSubmit={handleSubmit} className='form_fields'>
         <h1 className='form_title'>{formConstants.formTitle}</h1>
         <Field
-          name={formConstants.formFields.fullName}
+          type={formConstants.formFields.firstName}
+          name={formConstants.formFields.firstName}
           component={CustomInput}
-          label={formConstants.formLabels.fullNameLabel}
-          placeholder={formConstants.placeholders.fullNamePlaceholder}
-          errorText={formConstants.errorTexts.fullNameErrorText}
+          label={formConstants.formLabels.firstNameLabel}
+          placeholder={formConstants.placeholders.firstNamePlaceholder}
         />
         <Field
+          type={formConstants.formFields.lastName}
+          name={formConstants.formFields.lastName}
+          component={CustomInput}
+          label={formConstants.formLabels.lastNameLabel}
+          placeholder={formConstants.placeholders.lastNamePlaceholder}
+        />
+        <Field
+          type={formConstants.formFields.email}
           name={formConstants.formFields.email}
           label={formConstants.formLabels.emailLabel}
           component={CustomInput}
           placeholder={formConstants.placeholders.emailPlaceholder}
-          errorText={formConstants.errorTexts.emailErrorText}
         />
         <Field
+          type={formConstants.formFields.newPassword}
           name={formConstants.formFields.newPassword}
           label={formConstants.formLabels.newPasswordLabel}
           component={CustomInput}
           placeholder={formConstants.placeholders.newPasswordPlaceholder}
-          errorText={formConstants.errorTexts.newPasswordErrorText}
         />
         <Field
+          type={formConstants.formFields.newPassword}
           name={formConstants.formFields.repeatPassword}
           label={formConstants.formLabels.repeatPasswordLabel}
           component={CustomInput}
           placeholder={formConstants.placeholders.repeatPasswordPlaceholder}
-          errorText={formConstants.errorTexts.repeatPasswordErrorText}
         />
 
         <CustomButton
+          disabled={pristine || submitting}
           buttonText={formConstants.buttonText}
           buttonType='submit'
-          disabled={!valid}
         />
 
-        <a className='form_anchor'>{formConstants.anchorText}?</a>
-        {/*  <GoogleLogin
-          style={{ background: "red" }}
-          clientId="184114775759-9ovjrh0n1rcflc8f75q4gv2o0d9a8ms7.apps.googleusercontent.com"
-          buttonText="Login"
-          onSuccess={googleRespose}
-          onFailure={googleRespose}
-          cookiePolicy={"single_host_origin"}
-        /> */}
+        <div
+          onClick={() =>
+            RouteHelpers.goToRoute(routeConstants.publicRoutes.login.fullPath)
+          }
+          className='form_anchor'
+        >
+          {formConstants.anchorText}?
+        </div>
+        <LoginGoogle />
       </form>
     </div>
   );
@@ -72,4 +79,5 @@ const LoginForm = (props) => {
 
 export default reduxForm({
   form: "Register",
-})(LoginForm);
+  validate,
+})(RegisterForm);

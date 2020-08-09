@@ -10,22 +10,13 @@ import routeConstants from "../../../base/router/routes-constants";
 import formConstants from "../constants/form-constants";
 
 import LoginGoogle from "../../../shared_components/google-login/google-login";
-import {login} from "../actions/login-action";
 
 import validate from "../validation/login-validation";
 
 import "../styles/style.css";
 
 const LoginForm = (props) => {
-  const {handleSubmit, pristine, reset, submitting} = props;
-
-  const dispatch = useDispatch();
-
-  const loginHandler = async (data) => {
-    console.log(data);
-    await dispatch(login(data));
-  };
-
+  const {handleSubmit, pristine, submitting} = props;
   return (
     <form onSubmit={handleSubmit} className='form_fields'>
       <div>
@@ -39,7 +30,6 @@ const LoginForm = (props) => {
         component={CustomInput}
         label={formConstants.formLabels.emailLabel}
         placeholder={formConstants.placeholders.emailPlaceholder}
-        max={8}
       />
       <Field
         type={formConstants.formFields.passwordField}
@@ -53,7 +43,6 @@ const LoginForm = (props) => {
         disabled={pristine || submitting}
         buttonText={formConstants.button.text}
         buttonType={formConstants.button.type}
-        reset={reset}
       />
       <div
         onClick={() =>
@@ -66,9 +55,7 @@ const LoginForm = (props) => {
         {formConstants.anchorText}
       </div>
 
-      <div style={{borderRadius: "25px", overflow: "hidden"}}>
-        <LoginGoogle login={loginHandler} />
-      </div>
+      <LoginGoogle />
     </form>
   );
 };

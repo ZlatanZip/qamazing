@@ -25,7 +25,7 @@ const CustomInput = (props) => {
         {touched && error && (
           <small className='input_field_errorText'>{error}</small>
         )}
-      </div>
+      </div>{" "}
     </div>
   );
 };

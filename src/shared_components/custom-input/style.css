@@ -29,6 +29,8 @@
   display: block;
   color: rgb(251, 97, 76);
   font-size: smaller;
+  max-width: 70%;
+  margin: 0 auto;
 }
 
 .input_field_label {
