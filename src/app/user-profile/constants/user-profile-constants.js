@@ -12,10 +12,13 @@ export default {
     emailPlaceholder: "Please enter your email",
     passwordPlaceholder: "Please enter your password",
   },
-  errorTexts: {
-    emailErrorText: "Email is required",
-    passwordErrorText: "Password is required",
+  buttons: {
+    type: {
+      updateButton: "submit",
+    },
+    text: {
+      updateButton: "Update",
+      backButton: "Go Back",
+    },
   },
-  buttonText: "Login",
-  anchorText: "Forgot Password?",
 };

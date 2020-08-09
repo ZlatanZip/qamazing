@@ -6,9 +6,12 @@ import CustomButton from "../../../shared_components/custom-button/custom-button
 import CustomInput from "../../../shared_components/custom-input/custom-input";
 import formConstants from "../constants/user-profile-constants";
 
+import RouteHelpers from "../../../helpers/route-helpers";
+
 import {getUserProfile} from "../actions/user-profile-actions";
 
 import "../styles/style.css";
+import userProfileConstants from "../constants/user-profile-constants";
 
 class UserProfile extends Component {
   componentDidMount() {
@@ -44,15 +47,16 @@ class UserProfile extends Component {
       <form onSubmit={this.handleSubmit} className='form_fields'>
         <h1 className='form_title'>{formConstants.formTitle}</h1>
         {this.props.userProfile && this.showDetails(this.props.userProfile)}
+
         <CustomButton
-          buttonText={formConstants.buttonText.saveButton}
-          buttonType='submit'
-          // disabled={!valid}
+          buttonType={userProfileConstants.buttons.type.updateButton}
+          buttonText={userProfileConstants.buttons.text.updateButton}
         />
         <CustomButton
-          buttonText={formConstants.buttonText.cancleButton}
-          buttonType='submit'
-          // disabled={!valid}
+          buttonText={userProfileConstants.buttons.text.backButton}
+          click={() => {
+            RouteHelpers.goToRoute("back");
+          }}
         />
       </form>
     );

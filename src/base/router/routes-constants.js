@@ -12,6 +12,7 @@ import UserDetails from "../../app/user-details/components/user-details";
 import UserProfile from "../../app/user-profile/components/user-profile";
 import Projects from "../../app/projects/components/projects";
 import Resources from "../../app/resources/components/resources";
+import AddResource from "../../app/add-resource/components/add-resource";
 
 import Roles from "./role-constants";
 
@@ -123,6 +124,13 @@ export default {
       path: "/resources",
       fullPath: "/app/resources",
       component: Resources,
+      roles: [Roles.admin, Roles.officeManager],
+    },
+    addResource: {
+      name: "add-resource",
+      path: "/add-resource",
+      fullPath: "/app/add-resource",
+      component: AddResource,
       roles: [Roles.admin, Roles.officeManager],
     },
     dashboard: {

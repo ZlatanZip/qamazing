@@ -1,0 +1,68 @@
+.add_user_screen {
+  text-align: center;
+}
+
+.add_user_title {
+  font-size: 45px;
+  color: white;
+}
+
+.add_user_form {
+  width: 100%;
+  display: flex;
+}
+.add_user_credentials {
+  flex: 1;
+}
+.add_user_job_description {
+  flex: 1;
+}
+
+.name_and_lastname_wrapper {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.active_and_deleted_wrapper {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.contract_start_and_end_wrapper {
+  display: flex;
+  justify-content: space-evenly;
+}
+.phone_and_address_wrapper {
+  display: flex;
+  justify-content: space-evenly;
+}
+@media screen and (max-width: 862px) {
+  .add_user_form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .add_user_form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+  .name_and_lastname_wrapper {
+    display: flex;
+    justify-content: space-evenly;
+    flex-direction: column;
+  }
+  .active_and_deleted_wrapper {
+    display: flex;
+    justify-content: space-evenly;
+    flex-direction: column;
+  }
+  .contract_start_and_end_wrapper {
+    display: flex;
+    justify-content: space-evenly;
+    flex-direction: column;
+  }
+}
